@@ -1,0 +1,15 @@
+{
+  "name": "portfolio2026",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "npm run clean && tsc && cp -r public/. dist/",
+    "typecheck": "tsc --noEmit",
+    "serve": "npx --yes serve dist"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}
