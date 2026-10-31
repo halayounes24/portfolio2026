@@ -35,9 +35,9 @@ const lorem =
   "Placeholder copy. Replace this with a few sentences in your own words. " +
   "Keep it concrete: what the situation was, what you did, and why it mattered.";
 
-const wide: Asset = { src: "images/asset-wide.svg", alt: "Placeholder asset (wide)", caption: "Caption for this asset." };
-const tall: Asset = { src: "images/asset-tall.svg", alt: "Placeholder asset (tall)", caption: "Caption for this asset." };
-const square: Asset = { src: "images/asset-square.svg", alt: "Placeholder asset (square)" };
+const wide: Asset = { src: "assets/placeholders/asset-wide.svg", alt: "Placeholder asset (wide)", caption: "Caption for this asset." };
+const tall: Asset = { src: "assets/placeholders/asset-tall.svg", alt: "Placeholder asset (tall)", caption: "Caption for this asset." };
+const square: Asset = { src: "assets/placeholders/asset-square.svg", alt: "Placeholder asset (square)" };
 
 const disciplines = ["Product design", "Brand identity", "Web development", "UX research", "Motion", "Creative direction"];
 
@@ -48,7 +48,7 @@ export const projects: Project[] = disciplines.map((discipline, i) => {
     title: `Project ${n}`,
     discipline,
     year: String(2026 - Math.floor(i / 2)),
-    cover: `images/project-${n}.svg`,
+    cover: `assets/placeholders/project-${n}.svg`,
     coverAlt: `Cover image for project ${n}`,
     overview: "A one or two sentence overview of the project: what it is and who it was for.",
     facts: [

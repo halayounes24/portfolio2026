@@ -12,7 +12,7 @@ One-page static site: HTML + CSS + TypeScript (compiled with `tsc`, no bundler).
   - The site header (name + tabs) is plain HTML repeated in each page; mark the
     active tab with `aria-current="page"`.
   - `styles.css` — all styles; tokens (colours, accordion sizing) live at the top
-  - `images/` — project covers and assets (placeholders for now)
+  - `assets/` — images and other media; see `public/assets/README.md` for the folder layout and upload guide
 - `src/` — TypeScript, compiled to `dist/`
   - `projects.ts` — **all project content** (title, tags, facts, story sections, assets)
   - `accordion.ts` — renders the landing-page columns
