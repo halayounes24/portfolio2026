@@ -28,26 +28,73 @@ export interface Project {
 }
 
 // ---------------------------------------------------------------------------
-// Placeholder content — replace with real projects.
+// Projects — in the order they appear on the landing page.
+// Asset paths are relative to the site root, e.g. assets/projects/<slug>/cover.webp
 // ---------------------------------------------------------------------------
 
 const lorem =
   "Placeholder copy. Replace this with a few sentences in your own words. " +
   "Keep it concrete: what the situation was, what you did, and why it mattered.";
 
-const wide: Asset = { src: "assets/placeholders/asset-wide.svg", alt: "Placeholder asset (wide)", caption: "Caption for this asset." };
-const tall: Asset = { src: "assets/placeholders/asset-tall.svg", alt: "Placeholder asset (tall)", caption: "Caption for this asset." };
-const square: Asset = { src: "assets/placeholders/asset-square.svg", alt: "Placeholder asset (square)" };
+const project1: Project = {
+  slug: "project-1",
+  title: "Project 1", // TODO: real name
+  discipline: "Product design", // TODO
+  year: "2026", // TODO
+  cover: "assets/projects/project-1/cover.webp",
+  coverAlt: "Walnut nesting tables with white tile inlays in a sunlit room",
+  overview: "A one or two sentence overview of the project: what it is and who it was for.",
+  facts: [
+    { label: "Role", value: "Your role" },
+    { label: "Team", value: "Who you worked with" },
+    { label: "Materials", value: "Walnut, …" },
+    { label: "Duration", value: "3 months" },
+  ],
+  sections: [
+    {
+      heading: "The challenge",
+      body: lorem,
+      assets: [
+        {
+          src: "assets/projects/project-1/01.webp",
+          alt: "Top-down view of the tables set with food, hands holding a bowl of lemons and mint",
+        },
+      ],
+    },
+    {
+      heading: "What I did",
+      body: lorem,
+      assets: [
+        {
+          src: "assets/projects/project-1/02.gif",
+          alt: "Animated close-ups of the patterned walnut tabletops",
+        },
+      ],
+    },
+    {
+      heading: "The outcome",
+      body: lorem,
+      assets: [
+        {
+          src: "assets/projects/project-1/03.gif",
+          alt: "Animated views of the finished tables styled with food in a bright room",
+        },
+      ],
+    },
+  ],
+};
 
-const disciplines = ["Product design", "Brand identity", "Web development", "UX research", "Motion", "Creative direction"];
+// Temporary filler for projects that don't have real content yet.
+const placeholderWide: Asset = { src: "assets/placeholders/asset-wide.svg", alt: "Placeholder asset (wide)", caption: "Caption for this asset." };
+const placeholderTall: Asset = { src: "assets/placeholders/asset-tall.svg", alt: "Placeholder asset (tall)", caption: "Caption for this asset." };
+const placeholderSquare: Asset = { src: "assets/placeholders/asset-square.svg", alt: "Placeholder asset (square)" };
 
-export const projects: Project[] = disciplines.map((discipline, i) => {
-  const n = i + 1;
+function placeholderProject(n: number, discipline: string, year: string): Project {
   return {
     slug: `project-${n}`,
     title: `Project ${n}`,
     discipline,
-    year: String(2026 - Math.floor(i / 2)),
+    year,
     cover: `assets/placeholders/project-${n}.svg`,
     coverAlt: `Cover image for project ${n}`,
     overview: "A one or two sentence overview of the project: what it is and who it was for.",
@@ -58,13 +105,22 @@ export const projects: Project[] = disciplines.map((discipline, i) => {
       { label: "Duration", value: "3 months" },
     ],
     sections: [
-      { heading: "The challenge", body: lorem, assets: [wide] },
-      { heading: "What I did", body: lorem, assets: [tall, square] },
-      { heading: "The outcome", body: lorem, assets: [wide] },
+      { heading: "The challenge", body: lorem, assets: [placeholderWide] },
+      { heading: "What I did", body: lorem, assets: [placeholderTall, placeholderSquare] },
+      { heading: "The outcome", body: lorem, assets: [placeholderWide] },
     ],
     link: { label: "Visit live project", href: "#" },
   };
-});
+}
+
+export const projects: Project[] = [
+  project1,
+  placeholderProject(2, "Brand identity", "2026"),
+  placeholderProject(3, "Web development", "2025"),
+  placeholderProject(4, "UX research", "2025"),
+  placeholderProject(5, "Motion", "2024"),
+  placeholderProject(6, "Creative direction", "2024"),
+];
 
 export function findProject(slug: string | null): Project | undefined {
   return projects.find((p) => p.slug === slug);
