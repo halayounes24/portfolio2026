@@ -4,21 +4,31 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Project — Hala Younes</title>
+    <meta name="description" content="A project by Hala Younes." />
     <link rel="stylesheet" href="styles.css" />
     <script type="module" src="project-page.js"></script>
   </head>
   <body>
-    <nav class="topbar">
-      <a href="index.html#work">← All work</a>
-      <a href="index.html">Hala Younes</a>
-    </nav>
+    <header class="site-header">
+      <a class="site-header__name" href="index.html">Hala Younes</a>
+      <nav aria-label="Main">
+        <ul class="tabs-nav">
+          <li><a href="projects.html" aria-current="page">Projects</a></li>
+          <li><a href="info.html">Info</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
 
-    <main id="project" class="project">
-      <!-- Rendered from src/projects.ts based on ?p=<slug> -->
+    <main class="project">
+      <a class="back-link" href="projects.html">← All projects</a>
+      <div id="project">
+        <!-- Rendered from src/projects.ts based on ?p=<slug> -->
+      </div>
     </main>
 
     <footer class="footer">
-      <p>© Hala Younes</p>
+      <p>© 2026 Hala Younes</p>
     </footer>
   </body>
 </html>
