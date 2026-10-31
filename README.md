@@ -5,8 +5,7 @@ One-page static site: HTML + CSS + TypeScript (compiled with `tsc`, no bundler).
 
 ## Structure
 - `public/` — static files copied as-is into `dist/`
-  - `index.html` — landing page: intro + accordion of projects
-  - `projects.html` — Projects tab: grid of all projects
+  - `index.html` — landing page / Projects tab: intro + accordion of projects
   - `info.html` — Info tab: bio, experience, capabilities
   - `contact.html` — Contact tab: email and links
   - `project.html` — project page template (`project.html?p=<slug>`)
@@ -18,7 +17,6 @@ One-page static site: HTML + CSS + TypeScript (compiled with `tsc`, no bundler).
   - `projects.ts` — **all project content** (title, tags, facts, story sections, assets)
   - `accordion.ts` — renders the landing-page columns
   - `project-page.ts` — renders a project page from the `?p=` slug
-  - `projects-page.ts` — renders the Projects grid
   - `main.ts` — landing page entry point
   - `dom.ts` — small DOM helpers
 

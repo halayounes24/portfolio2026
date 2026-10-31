@@ -462,35 +462,6 @@ a { color: inherit; }
   font-size: clamp(1.05rem, 1.6vw, 1.25rem);
 }
 
-/* Projects grid */
-.grid {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
-  gap: clamp(1.5rem, 3vw, 2.5rem) clamp(1rem, 2vw, 1.5rem);
-}
-
-.tile__link { display: grid; gap: 0.6rem; text-decoration: none; }
-.tile__link:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
-
-.tile__media {
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-  background: var(--line);
-}
-.tile__media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform var(--dur) var(--ease);
-}
-.tile__link:hover .tile__media img { transform: scale(1.04); }
-
-.tile__title { margin: 0.4rem 0 0; font-size: 1.25rem; }
-.tile .tags { color: var(--muted); }
-
 /* Info */
 .info {
   display: grid;
