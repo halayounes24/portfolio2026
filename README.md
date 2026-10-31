@@ -5,14 +5,16 @@ One-page static site: HTML + CSS + TypeScript (compiled with `tsc`, no bundler).
 
 ## Structure
 - `public/` — static files copied as-is into `dist/`
-  - `index.html` — intro + work section markup
-  - `styles.css` — all styles; tokens (colours, rolodex sizing) live at the top
-  - `images/` — project images (placeholders for now)
+  - `index.html` — landing page: intro + accordion of projects
+  - `project.html` — project page template (`project.html?p=<slug>`)
+  - `styles.css` — all styles; tokens (colours, accordion sizing) live at the top
+  - `images/` — project covers and assets (placeholders for now)
 - `src/` — TypeScript, compiled to `dist/`
-  - `projects.ts` — project data (edit this to add/change projects)
-  - `rolodex.ts` — renders the cards and handles open/close
-  - `main.ts` — entry point
-- `dist/` — build output (git-ignored)
+  - `projects.ts` — **all project content** (title, tags, facts, story sections, assets)
+  - `accordion.ts` — renders the landing-page columns
+  - `project-page.ts` — renders a project page from the `?p=` slug
+  - `main.ts` — landing page entry point
+  - `dom.ts` — small DOM helpers
 
 ## Develop
 ```bash

@@ -1,30 +1,75 @@
+export interface Asset {
+  src: string;
+  alt: string;
+  caption?: string;
+}
+
+export interface Section {
+  heading: string;
+  body: string;
+  /** Assets shown alongside this section's text. */
+  assets: Asset[];
+}
+
 export interface Project {
-  id: string;
+  /** Used in the URL: project.html?p=<slug> */
+  slug: string;
   title: string;
+  discipline: string;
   year: string;
-  role: string;
-  /** One-liner shown in the hover preview. */
-  summary: string;
-  /** Longer copy shown when the card is fully open. */
-  description: string;
-  image: string;
-  imageAlt: string;
-  tags: string[];
+  cover: string;
+  coverAlt: string;
+  /** Short intro shown under the title on the project page. */
+  overview: string;
+  /** Key facts, e.g. role, team, tools, duration. */
+  facts: { label: string; value: string }[];
+  sections: Section[];
   link?: { label: string; href: string };
 }
 
-// Placeholder content — swap in real projects later.
-export const projects: Project[] = [1, 2, 3, 4, 5, 6].map((n) => ({
-  id: `project-${n}`,
-  title: `Project ${n}`,
-  year: String(2026 - Math.floor((n - 1) / 2)),
-  role: "Role / discipline",
-  summary: "A one-line summary of the project that appears on hover.",
-  description:
-    "A longer description of the project: the problem, what you did, and the outcome. " +
-    "This only appears once the card is fully opened, so it can run a few sentences.",
-  image: `images/project-${n}.svg`,
-  imageAlt: `Placeholder image for project ${n}`,
-  tags: ["Tag one", "Tag two", "Tag three"],
-  link: { label: "View project", href: "#" },
-}));
+// ---------------------------------------------------------------------------
+// Placeholder content — replace with real projects.
+// ---------------------------------------------------------------------------
+
+const lorem =
+  "Placeholder copy. Replace this with a few sentences in your own words. " +
+  "Keep it concrete: what the situation was, what you did, and why it mattered.";
+
+const wide: Asset = { src: "images/asset-wide.svg", alt: "Placeholder asset (wide)", caption: "Caption for this asset." };
+const tall: Asset = { src: "images/asset-tall.svg", alt: "Placeholder asset (tall)", caption: "Caption for this asset." };
+const square: Asset = { src: "images/asset-square.svg", alt: "Placeholder asset (square)" };
+
+const disciplines = ["Product design", "Brand identity", "Web development", "UX research", "Motion", "Creative direction"];
+
+export const projects: Project[] = disciplines.map((discipline, i) => {
+  const n = i + 1;
+  return {
+    slug: `project-${n}`,
+    title: `Project ${n}`,
+    discipline,
+    year: String(2026 - Math.floor(i / 2)),
+    cover: `images/project-${n}.svg`,
+    coverAlt: `Cover image for project ${n}`,
+    overview: "A one or two sentence overview of the project: what it is and who it was for.",
+    facts: [
+      { label: "Role", value: "Your role" },
+      { label: "Team", value: "Who you worked with" },
+      { label: "Tools", value: "Figma, TypeScript, …" },
+      { label: "Duration", value: "3 months" },
+    ],
+    sections: [
+      { heading: "The challenge", body: lorem, assets: [wide] },
+      { heading: "What I did", body: lorem, assets: [tall, square] },
+      { heading: "The outcome", body: lorem, assets: [wide] },
+    ],
+    link: { label: "Visit live project", href: "#" },
+  };
+});
+
+export function findProject(slug: string | null): Project | undefined {
+  return projects.find((p) => p.slug === slug);
+}
+
+export function projectUrl(project: Project): string {
+  return `project.html?p=${encodeURIComponent(project.slug)}`;
+}
