@@ -1,7 +1,8 @@
-const statusEl = document.querySelector<HTMLParagraphElement>("#status");
+import { projects } from "./projects.js";
+import { mountRolodex } from "./rolodex.js";
 
-if (statusEl) {
-  statusEl.textContent = "TypeScript is up and running.";
-}
+const rolodex = document.querySelector<HTMLElement>("#rolodex");
+if (rolodex) mountRolodex(rolodex, projects);
 
-export {};
+const year = document.querySelector<HTMLElement>("#year");
+if (year) year.textContent = String(new Date().getFullYear());

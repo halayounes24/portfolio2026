@@ -4,8 +4,14 @@ My portfolio will be so cool.
 One-page static site: HTML + CSS + TypeScript (compiled with `tsc`, no bundler).
 
 ## Structure
-- `public/` — static files (`index.html`, `styles.css`) copied as-is into `dist/`
+- `public/` — static files copied as-is into `dist/`
+  - `index.html` — intro + work section markup
+  - `styles.css` — all styles; tokens (colours, rolodex sizing) live at the top
+  - `images/` — project images (placeholders for now)
 - `src/` — TypeScript, compiled to `dist/`
+  - `projects.ts` — project data (edit this to add/change projects)
+  - `rolodex.ts` — renders the cards and handles open/close
+  - `main.ts` — entry point
 - `dist/` — build output (git-ignored)
 
 ## Develop

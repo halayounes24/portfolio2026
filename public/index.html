@@ -4,13 +4,35 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Hala Younes — Portfolio</title>
+    <meta name="description" content="Portfolio of Hala Younes." />
     <link rel="stylesheet" href="styles.css" />
     <script type="module" src="main.js"></script>
   </head>
   <body>
-    <main>
-      <h1>Hello, world!</h1>
-      <p id="status">Loading…</p>
+    <header class="intro">
+      <div class="intro__inner">
+        <p class="intro__eyebrow">Hala Younes</p>
+        <h1 class="intro__lead">
+          A couple of lines about me go here — who I am and what I make.
+        </h1>
+        <p class="intro__sub">
+          A second line with a bit more colour: what I care about, where I'm based, what I'm up to now.
+        </p>
+      </div>
+      <a class="intro__scroll" href="#work">
+        Selected work <span aria-hidden="true">↓</span>
+      </a>
+    </header>
+
+    <main id="work" class="work">
+      <h2 class="work__heading">Selected work</h2>
+      <ol id="rolodex" class="rolodex">
+        <!-- Cards are rendered from src/projects.ts -->
+      </ol>
     </main>
+
+    <footer class="footer">
+      <p>© <span id="year">2026</span> Hala Younes</p>
+    </footer>
   </body>
 </html>
