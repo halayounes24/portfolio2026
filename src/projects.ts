@@ -86,6 +86,15 @@ const loccitane: Project = {
   ],
 };
 
+// Lavina Tea — real details; images are placeholders until uploaded
+// to assets/projects/lavina-tea/.
+const lavinaTea: Project = {
+  ...placeholderProject(2, "Packaging Design", "2025"),
+  slug: "lavina-tea",
+  title: "Lavina Tea",
+  coverAlt: "Cover image for Lavina Tea",
+};
+
 // Project 4 — uses the uploaded images in assets/projects/project-4/.
 const project4: Project = {
   ...placeholderProject(4, "Film", "2025"),
@@ -127,7 +136,7 @@ const project4: Project = {
 
 export const projects: Project[] = [
   loccitane,
-  placeholderProject(2, "Brand identity", "2026"),
+  lavinaTea,
   placeholderProject(3, "Campaign", "2025"),
   project4,
   placeholderProject(5, "Website", "2024"),
