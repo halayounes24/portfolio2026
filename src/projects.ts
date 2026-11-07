@@ -120,10 +120,10 @@ const tabliye: Project = {
 // GITEX — real details; images are placeholders until uploaded
 // to assets/projects/gitex/.
 const gitex: Project = {
-  ...placeholderProject(6, "Art Direction", "2024"),
+  ...placeholderProject(6, "Event", "2024"),
   slug: "gitex",
   title: "GITEX",
-  roles: ["Booth Design"],
+  roles: ["Art Direction", "Design"],
   coverAlt: "Cover image for GITEX",
 };
 
