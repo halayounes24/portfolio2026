@@ -1,8 +1,7 @@
 /* ---------- Tokens ---------- */
 :root {
-  --gutter: clamp(16px, 4vw, 48px);
-  --max: 1200px;  /* content width */
-  --frame: calc(var(--max) + 2 * var(--gutter)); /* content width + side gutters */
+  /* Every page runs edge to edge with this margin on the left and right. */
+  --gutter: clamp(12px, 1.5vw, 24px);
 
   /* Accordion */
   --acc-h: clamp(420px, 70vh, 680px); /* height of the row of columns */
@@ -121,8 +120,6 @@ a { color: inherit; }
   justify-content: space-between;
   gap: 1rem;
   height: var(--header-h);
-  max-width: var(--frame);
-  margin-inline: auto;
   padding-inline: var(--gutter);
 }
 
@@ -188,57 +185,31 @@ a { color: inherit; }
   .tabs-nav a { padding-inline: 0.5rem; font-size: 0.9rem; }
 }
 
-/* ---------- Intro ---------- */
+/* ---------- Intro ----------
+   Deliberately short so the projects start on the first screen. */
 .intro {
-  min-height: calc(100svh - 4rem); /* fill the first screen below the header */
-  display: grid;
-  grid-template-rows: 1fr auto;
-  padding: var(--gutter);
-}
-
-.intro__inner {
-  align-self: center;
-  width: 100%;
-  max-width: var(--max);
-  margin-inline: auto;
+  padding: clamp(2.5rem, 9vh, 6rem) var(--gutter) clamp(2rem, 6vh, 4rem);
 }
 
 .intro__lead {
   margin: 0;
-  max-width: 22ch;
-  font-size: clamp(2rem, 5.5vw, 4.25rem);
+  max-width: 26ch;
+  font-size: clamp(1.75rem, 4vw, 3.25rem);
   font-weight: 400;
-  line-height: 1.05;
+  line-height: 1.08;
   letter-spacing: -0.02em;
 }
 
 .intro__sub {
-  margin: 1.5rem 0 0;
-  max-width: 48ch;
+  margin: 1.25rem 0 0;
+  max-width: 52ch;
   color: var(--muted);
-  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
 }
-
-.intro__scroll {
-  justify-self: center;
-  color: var(--muted);
-  text-decoration: none;
-  font-size: 0.95rem;
-}
-.intro__scroll:hover { color: var(--fg); }
 
 /* ---------- Work / Accordion ---------- */
-/* Full-bleed: the accordion spans the whole viewport width. */
 .work {
-  padding-block: var(--gutter) 6rem;
-}
-
-/* The heading stays aligned with the rest of the page content. */
-.work > .eyebrow {
-  max-width: var(--max);
-  margin-inline: auto;
-  padding-inline: var(--gutter);
-  box-sizing: content-box;
+  padding: 0 var(--gutter) 6rem;
 }
 
 .accordion {
@@ -369,8 +340,6 @@ a { color: inherit; }
 
 /* ---------- Project page ---------- */
 .project {
-  max-width: var(--frame);
-  margin-inline: auto;
   padding: 1rem var(--gutter) 6rem;
 }
 
@@ -497,8 +466,6 @@ a { color: inherit; }
 
 /* ---------- Generic content pages (Projects, Info, Contact) ---------- */
 .page {
-  max-width: var(--frame);
-  margin-inline: auto;
   padding: 0 var(--gutter) 6rem;
 }
 
