@@ -18,6 +18,8 @@ export interface Project {
   /** Kind of project, e.g. Campaign, Brand identity, Film. */
   type: string;
   year: string;
+  /** What you did on the project, e.g. ["Art Direction", "Styling"]. */
+  roles: string[];
   cover: string;
   coverAlt: string;
   /** Short intro shown under the title on the project page. */
@@ -42,11 +44,11 @@ const loccitane: Project = {
   title: "L'Occitane En Provence",
   type: "Campaign",
   year: "2023",
+  roles: ["Art Direction", "Styling"],
   cover: "assets/projects/loccitane/cover.webp",
   coverAlt: "Walnut nesting tables with white tile inlays in a sunlit room",
   overview: "A one or two sentence overview of the project: what it is and who it was for.",
   facts: [
-    { label: "Role", value: "Your role" },
     { label: "Team", value: "Who you worked with" },
     { label: "Materials", value: "Walnut, …" },
     { label: "Duration", value: "3 months" },
@@ -96,12 +98,12 @@ function placeholderProject(n: number, type: string, year: string): Project {
     title: `Project ${n}`,
     type,
     year,
+    roles: ["Role", "Role"],
     cover: `assets/placeholders/project-${n}.svg`,
     coverAlt: `Cover image for project ${n}`,
     overview: "A one or two sentence overview of the project: what it is and who it was for.",
     facts: [
-      { label: "Role", value: "Your role" },
-      { label: "Team", value: "Who you worked with" },
+        { label: "Team", value: "Who you worked with" },
       { label: "Tools", value: "Figma, TypeScript, …" },
       { label: "Duration", value: "3 months" },
     ],

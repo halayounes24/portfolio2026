@@ -234,7 +234,7 @@ a { color: inherit; }
 }
 
 /* Project list: one row per project, separated by thin rules.
-   left = year + project name, right = project type. */
+   left = "type / year" + project name, right = roles. */
 .project-list {
   list-style: none;
   margin: 0;
@@ -250,8 +250,8 @@ a { color: inherit; }
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   grid-template-areas:
-    "meta  type"
-    "title type";
+    "meta  roles"
+    "title roles";
   align-items: start;
   column-gap: var(--gutter);
   row-gap: 0.75rem;
@@ -260,7 +260,7 @@ a { color: inherit; }
   transition: opacity 200ms, padding-block var(--dur) var(--ease);
 }
 
-/* Left side, top to bottom: year, then the project name. */
+/* Left side, top to bottom: "type / year", then the project name. */
 .project-row__meta {
   grid-area: meta;
   display: grid;
@@ -277,8 +277,8 @@ a { color: inherit; }
   line-height: 1.05;
 }
 
-.project-row__type {
-  grid-area: type;
+.project-row__roles {
+  grid-area: roles;
   margin: 0;
   font-size: 0.75rem;
   text-align: right;
