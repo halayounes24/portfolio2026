@@ -3,6 +3,16 @@
   /* Every page runs edge to edge with this margin on the left and right. */
   --gutter: clamp(24px, 5vw, 80px);
 
+  /* Type scale — taken from the landing page and used on every page. */
+  --fs-label: 0.75rem;                      /* 12px: type / year, roles, captions, footer */
+  --fs-ui: 0.8rem;                          /* 13px: name, tabs, buttons */
+  --fs-body: clamp(0.85rem, 1vw, 0.95rem);  /* paragraphs, facts */
+  --fs-lead: clamp(1.2rem, 2vw, 1.75rem);   /* intro statements */
+  --fs-title: clamp(1.15rem, 1.8vw, 1.6rem);/* project names, page titles (display style) */
+
+  /* Vertical rhythm — the landing intro's spacing, reused for every page header. */
+  --space-top: clamp(2.5rem, 9vh, 6rem);    /* above a page's first heading */
+  --space-section: clamp(2rem, 6vh, 4rem);  /* between major blocks */
 
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
   --dur: 450ms;
@@ -73,6 +83,7 @@ body {
   text-transform: uppercase; /* all text on the site is set in capitals */
   background: var(--bg);
   color: var(--fg);
+  font-size: var(--fs-body);
   line-height: 1.5;
 }
 
@@ -93,20 +104,17 @@ button, input, select, textarea { font: inherit; }
 
 a { color: inherit; }
 
+/* Lists of short labels read "A / B / C", like the landing page rows. */
 .tags {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
   margin: 0;
   padding: 0;
+  font-size: var(--fs-label);
 }
-.tags li {
-  padding: 0.2rem 0.65rem;
-  border: 1px solid currentColor;
-  font-size: 0.8rem;
-  white-space: nowrap;
-}
+.tags li { white-space: nowrap; }
+.tags li + li::before { content: "\00a0/\00a0"; }
 
 /* ---------- Site header + tabs ----------
    Wide screens: name on the left half; the right half is split into four
@@ -124,7 +132,7 @@ a { color: inherit; }
 
 .site-header__name {
   justify-self: start;
-  font-size: 0.8rem;
+  font-size: var(--fs-ui);
   font-weight: 500;
   text-decoration: none;
   white-space: nowrap;
@@ -174,7 +182,7 @@ a { color: inherit; }
   display: inline-block;
   padding-block: 0.4rem;
   color: var(--fg);
-  font-size: 0.8rem;
+  font-size: var(--fs-ui);
   text-decoration: none;
   opacity: 0.35;              /* other tabs are dimmed */
   transition: opacity 150ms;
@@ -209,13 +217,13 @@ a { color: inherit; }
 /* ---------- Intro ----------
    Deliberately short so the projects start on the first screen. */
 .intro {
-  padding: clamp(2.5rem, 9vh, 6rem) var(--gutter) clamp(2rem, 6vh, 4rem);
+  padding: var(--space-top) var(--gutter) var(--space-section);
 }
 
 .intro__lead {
   margin: 0;
   max-width: 40ch;
-  font-size: clamp(1.2rem, 2vw, 1.75rem);
+  font-size: var(--fs-lead);
   font-weight: 400;
   line-height: 1.15;
   letter-spacing: -0.01em;
@@ -225,10 +233,10 @@ a { color: inherit; }
   margin: 1.25rem 0 0;
   max-width: 52ch;
   color: var(--muted);
-  font-size: clamp(0.85rem, 1vw, 0.95rem);
+  font-size: var(--fs-body);
 }
 
-/* ---------- Work / Accordion ---------- */
+/* ---------- Work / project list ---------- */
 .work {
   padding: 0 var(--gutter) 6rem;
 }
@@ -265,7 +273,7 @@ a { color: inherit; }
   grid-area: meta;
   display: grid;
   margin: 0;
-  font-size: 0.75rem;
+  font-size: var(--fs-label);
   font-weight: 500;
   line-height: 1.35;
 }
@@ -273,14 +281,14 @@ a { color: inherit; }
 .project-row__title {
   grid-area: title;
   margin: 0;
-  font-size: clamp(1.15rem, 1.8vw, 1.6rem);
+  font-size: var(--fs-title);
   line-height: 1.05;
 }
 
 .project-row__roles {
   grid-area: roles;
   margin: 0;
-  font-size: 0.75rem;
+  font-size: var(--fs-label);
   text-align: right;
 }
 
@@ -298,64 +306,99 @@ a { color: inherit; }
 .project-row__link:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 
 
-/* ---------- Project page ---------- */
+/* ---------- Shared page structure (Info, Contact, project pages) ----------
+   Same margins, spacing and type sizes as the landing page. */
+.page,
 .project {
-  padding: 1rem var(--gutter) 6rem;
+  padding: 0 var(--gutter) 6rem;
+}
+
+/* Page header: same space above as the landing intro. */
+.page__header,
+.project__header {
+  padding-block: var(--space-top) var(--space-section);
+}
+
+/* Page and project titles use the same display size as project names. */
+.page__title,
+.project__title {
+  margin: 0;
+  font-size: var(--fs-title);
+  line-height: 1.05;
+}
+
+/* Intro statements use the same size as the landing "about me" lead. */
+.page__lead,
+.project__overview {
+  margin: 1.25rem 0 0;
+  max-width: 40ch;
+  font-size: var(--fs-lead);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+/* Small labels: same as "type / year" on the landing page. */
+.back-link,
+.project__meta,
+.section-label,
+.asset figcaption,
+.project__next-label {
+  font-size: var(--fs-label);
+  font-weight: 500;
 }
 
 .back-link {
+  display: inline-block;
+  margin-top: var(--space-section);
   color: var(--muted);
-  font-size: 0.95rem;
   text-decoration: none;
 }
 .back-link:hover { color: var(--fg); }
 
+/* ---------- Project page ---------- */
 .project__header {
   display: grid;
   grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
   grid-template-areas:
+    "meta     facts"
     "title    facts"
-    "tags     facts"
     "overview facts";
   align-items: start;
-  column-gap: clamp(1.5rem, 5vw, 5rem);
-  row-gap: 1rem;
-  padding-block: clamp(2rem, 8vh, 5rem) 2.5rem;
+  column-gap: var(--gutter);
+  row-gap: 0.75rem;
 }
+/* The back link already sits above, so the header needs less space on top. */
+.project .project__header { padding-top: var(--space-section); }
 
-.project__title {
-  grid-area: title;
-  margin: 0;
-  font-size: clamp(2.25rem, 6vw, 4.5rem);
-  line-height: 1;
-}
-.project__header .tags { grid-area: tags; color: var(--muted); }
+.project__meta { grid-area: meta; margin: 0; }
+.project__title { grid-area: title; }
+.project__overview { grid-area: overview; }
 
-.project__overview {
-  grid-area: overview;
-  margin: 0.5rem 0 0;
-  max-width: 50ch;
-  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
-}
-
-.project__facts {
-  grid-area: facts;
+/* Facts and info lists: label left, value right, thin rules like the project list. */
+.project__facts,
+.info__list {
   margin: 0;
   display: grid;
-  gap: 0.75rem;
+  border-top: 1px solid var(--rule);
 }
-.project__facts div {
+.project__facts { grid-area: facts; }
+.project__facts div,
+.info__list div {
   display: grid;
-  grid-template-columns: 6rem 1fr;
-  gap: 1rem;
-  padding-top: 0.75rem;
-  border-top: 1px solid var(--line);
+  grid-template-columns: minmax(6rem, 1fr) minmax(0, 2fr);
+  gap: var(--gutter);
+  padding-block: 0.75rem;
+  border-bottom: 1px solid var(--rule);
 }
-.project__facts dt { color: var(--muted); }
-.project__facts dd { margin: 0; }
+.project__facts dt,
+.info__list dt { color: var(--muted); font-size: var(--fs-label); font-weight: 500; padding-top: 0.15em; }
+.project__facts dd,
+.info__list dd { margin: 0; overflow-wrap: anywhere; } /* long links can wrap on small screens */
+.info__list a { text-decoration-color: var(--rule); text-underline-offset: 0.2em; }
+.info__list a:hover { color: var(--accent); }
 
 .project__cover {
-  margin: 0 0 clamp(3rem, 10vh, 6rem);
+  margin: 0 0 var(--space-section);
   overflow: hidden;
   aspect-ratio: 16 / 9;
   background: var(--line);
@@ -366,8 +409,10 @@ a { color: inherit; }
 .story {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
-  gap: clamp(1.5rem, 5vw, 5rem);
-  margin-bottom: clamp(4rem, 12vh, 8rem);
+  gap: var(--gutter);
+  margin-bottom: var(--space-section);
+  padding-top: var(--space-section);
+  border-top: 1px solid var(--rule);
 }
 
 .story__text {
@@ -377,12 +422,13 @@ a { color: inherit; }
 }
 .story__text h2 {
   margin: 0 0 0.75rem;
+  font-size: var(--fs-label);
   font-weight: 500;
-  font-size: clamp(1.25rem, 2vw, 1.6rem);
+  color: var(--muted);
 }
-.story__text p { margin: 0; color: var(--muted); }
+.story__text p { margin: 0; max-width: 45ch; }
 
-.story__media { display: grid; gap: 1.5rem; }
+.story__media { display: grid; gap: var(--gutter); }
 
 .asset { margin: 0; }
 .asset img {
@@ -392,62 +438,50 @@ a { color: inherit; }
 .asset figcaption {
   margin-top: 0.5rem;
   color: var(--muted);
-  font-size: 0.85rem;
 }
 
 .project__cta {
   display: inline-block;
-  padding: 0.85rem 1.4rem;
+  padding: 0.75rem 1.25rem;
   background: var(--fg);
   color: var(--bg);
+  font-size: var(--fs-ui);
   font-weight: 500;
   text-decoration: none;
 }
 .project__cta:hover { background: var(--accent); color: #fff; }
 
+/* Next project: styled like a row of the landing-page list. */
 .project__next {
-  margin-top: 5rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--line);
+  margin-top: var(--space-section);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
 }
-.project__next a { display: inline-grid; text-decoration: none; }
-.project__next-label { color: var(--muted); font-size: 0.9rem; }
-.project__next-title { font-size: clamp(1.75rem, 4vw, 3rem); }
-.project__next a:hover .project__next-title { color: var(--accent); }
+.project__next a {
+  display: grid;
+  gap: 0.75rem;
+  padding-block: clamp(1.1rem, 2.5vw, 1.75rem);
+  text-decoration: none;
+}
+.project__next-label { color: var(--muted); }
+.project__next-title { font-size: var(--fs-title); line-height: 1.05; }
+.project__next a:hover { font-style: italic; }
 
 @media (max-width: 720px) {
   .project__header {
     grid-template-columns: 1fr;
-    grid-template-areas: "title" "tags" "overview" "facts";
+    grid-template-areas: "meta" "title" "overview" "facts";
   }
+  .project__facts { margin-top: var(--space-section); }
   .story { grid-template-columns: 1fr; }
   .story__text { position: static; }
 }
 
-/* ---------- Generic content pages (Projects, Info, Contact) ---------- */
-.page {
-  padding: 0 var(--gutter) 6rem;
-}
-
-.page__header { padding-block: clamp(2rem, 8vh, 5rem) clamp(2rem, 5vh, 3rem); }
-
-.page__title {
-  margin: 0;
-  font-size: clamp(2.25rem, 6vw, 4.5rem);
-  line-height: 1;
-}
-
-.page__lead {
-  margin: 1.25rem 0 0;
-  max-width: 50ch;
-  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
-}
-
-/* Info */
+/* ---------- Info ---------- */
 .info {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
-  gap: clamp(1.5rem, 5vw, 5rem);
+  gap: var(--gutter);
   align-items: start;
 }
 
@@ -455,43 +489,26 @@ a { color: inherit; }
 .info__portrait img { width: 100%; }
 
 .info__body .page__lead { margin-top: 0; }
-.info__body > p:not(.page__lead) { color: var(--muted); max-width: 60ch; }
+.info__body > p:not(.page__lead) { color: var(--muted); max-width: 60ch; margin: 1.25rem 0 0; }
 
-.info__section { margin-top: 3rem; }
+.info__section { margin-top: var(--space-section); }
 .info__section h2 {
-  margin: 0 0 1rem;
-  font-size: 0.95rem;
+  margin: 0 0 0.75rem;
+  font-size: var(--fs-label);
   font-weight: 500;
   color: var(--muted);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
 }
-.info__section .tags { color: var(--muted); }
 
-.info__list { margin: 0; display: grid; }
-.info__list div {
-  display: grid;
-  grid-template-columns: minmax(7rem, 1fr) minmax(0, 2fr);
-  gap: 1rem;
-  padding-block: 0.75rem;
-  border-top: 1px solid var(--line);
-}
-.info__list div:last-child { border-bottom: 1px solid var(--line); }
-.info__list dt { color: var(--muted); }
-.info__list dd { margin: 0; overflow-wrap: anywhere; } /* long links can wrap on small screens */
-.info__list a { text-decoration-color: var(--line); text-underline-offset: 0.2em; }
-.info__list a:hover { color: var(--accent); }
-
-/* Contact */
+/* ---------- Contact ---------- */
 .contact__email {
   display: inline-block;
-  margin-bottom: clamp(2.5rem, 8vh, 4rem);
-  font-size: clamp(1.75rem, 5vw, 3.5rem);
+  margin-bottom: var(--space-section);
+  font-size: var(--fs-lead);
   font-weight: 400;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
   text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 0.15em;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
   overflow-wrap: anywhere;
 }
 .contact__email:hover { color: var(--accent); }
@@ -549,8 +566,8 @@ a { color: inherit; }
 
 /* ---------- Footer ---------- */
 .footer {
-  padding: 2rem var(--gutter);
-  text-align: center;
+  padding: var(--space-section) var(--gutter);
   color: var(--muted);
-  font-size: 0.9rem;
+  font-size: var(--fs-label);
+  font-weight: 500;
 }

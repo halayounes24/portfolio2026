@@ -1,4 +1,4 @@
-import { coverTransitionName, el, tagList } from "./dom.js";
+import { coverTransitionName, el } from "./dom.js";
 import { findProject, projects, projectUrl, type Asset, type Project } from "./projects.js";
 
 function renderAsset(asset: Asset): HTMLElement {
@@ -19,8 +19,9 @@ function renderProject(project: Project): DocumentFragment {
   // Header
   const header = el("header", "project__header");
   header.append(
+    // Same "type / year" label as the project's row on the landing page.
+    el("p", "project__meta", `${project.type} / ${project.year}`),
     el("h1", "project__title", project.title),
-    tagList([project.type, project.year]),
     el("p", "project__overview", project.overview),
   );
 
