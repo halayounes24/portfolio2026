@@ -200,6 +200,16 @@ const developmentAffairs: Project = {
   coverAlt: "Cover image for Office of Development Affairs",
 };
 
+// The Enzo Mari Chair — real details; images to come
+// (assets/projects/enzo-mari-chair/).
+const enzoMariChair: Project = {
+  ...placeholderProject(10, "Product", "2023"),
+  slug: "enzo-mari-chair",
+  title: "The Enzo Mari Chair",
+  roles: ["Industrial Design", "Furniture Design"],
+  coverAlt: "Cover image for The Enzo Mari Chair",
+};
+
 export const projects: Project[] = [
   loccitane,
   lavinaTea,
@@ -210,6 +220,7 @@ export const projects: Project[] = [
   ajman,
   fluidity,
   developmentAffairs,
+  enzoMariChair,
 ];
 
 export function findProject(slug: string | null): Project | undefined {
