@@ -25,9 +25,8 @@ export interface Project {
   /** Small image that follows the cursor when hovering the project's row (optional). */
   hoverImage?: string;
   /** Short intro shown under the title on the project page. */
+  /** "Project info" text shown on the project page. */
   overview: string;
-  /** Key facts, e.g. role, team, tools, duration. */
-  facts: { label: string; value: string }[];
   sections: Section[];
   link?: { label: string; href: string };
 }
@@ -56,11 +55,6 @@ function placeholderProject(n: number, type: string, year: string): Project {
     cover: `assets/placeholders/project-${n}.svg`,
     coverAlt: `Cover image for project ${n}`,
     overview: "A one or two sentence overview of the project: what it is and who it was for.",
-    facts: [
-      { label: "Team", value: "Who you worked with" },
-      { label: "Tools", value: "Figma, TypeScript, …" },
-      { label: "Duration", value: "3 months" },
-    ],
     sections: [
       { heading: "The challenge", body: lorem, assets: [placeholderWide] },
       { heading: "What I did", body: lorem, assets: [placeholderTall, placeholderSquare] },
@@ -88,11 +82,6 @@ const project4: Project = {
   ...placeholderProject(4, "Film", "2025"),
   cover: "assets/projects/project-4/cover.webp",
   coverAlt: "Walnut nesting tables with white tile inlays in a sunlit room",
-  facts: [
-    { label: "Team", value: "Who you worked with" },
-    { label: "Materials", value: "Walnut, …" },
-    { label: "Duration", value: "3 months" },
-  ],
   sections: [
     {
       heading: "The challenge",

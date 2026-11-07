@@ -16,22 +16,26 @@ function renderAsset(asset: Asset): HTMLElement {
 function renderProject(project: Project): DocumentFragment {
   const frag = document.createDocumentFragment();
 
-  // Header
+  // Header — left half: project name. Right half (lined up under the
+  // header tabs): Project info, then Year and Role.
   const header = el("header", "project__header");
-  header.append(
-    // Same "type / year" label as the project's row on the landing page.
-    el("p", "project__meta", `${project.type} / ${project.year}`),
-    el("h1", "project__title", project.title),
-    el("p", "project__overview", project.overview),
-  );
 
-  const facts = el("dl", "project__facts");
-  for (const f of [{ label: "Role", value: project.roles.join(" / ") }, ...project.facts]) {
-    const row = el("div");
-    row.append(el("dt", undefined, f.label), el("dd", undefined, f.value));
-    facts.append(row);
+  const info = el("div", "project__info");
+  const about = el("div", "project__about");
+  about.append(el("h2", "project__label", "Project info"), el("p", "project__text", project.overview));
+
+  const details = el("dl", "project__details");
+  for (const [label, value] of [
+    ["Year", project.year],
+    ["Role", project.roles.join(" / ")],
+  ]) {
+    const item = el("div");
+    item.append(el("dt", "project__label", label), el("dd", "project__text", value));
+    details.append(item);
   }
-  header.append(facts);
+  info.append(about, details);
+
+  header.append(el("h1", "project__title", project.title), info);
 
   // Cover
   const cover = el("figure", "project__cover");
@@ -78,10 +82,9 @@ function renderProject(project: Project): DocumentFragment {
 function renderNotFound(): DocumentFragment {
   const frag = document.createDocumentFragment();
   const header = el("header", "project__header");
-  header.append(
-    el("h1", "project__title", "Project not found"),
-    el("p", "project__overview", "That project doesn't exist (or has moved)."),
-  );
+  const info = el("div", "project__info");
+  info.append(el("p", "project__text", "That project doesn't exist (or has moved)."));
+  header.append(el("h1", "project__title", "Project not found"), info);
   frag.append(header);
   return frag;
 }
