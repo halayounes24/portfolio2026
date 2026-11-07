@@ -90,6 +90,13 @@ body {
 
 img { display: block; max-width: 100%; }
 
+/* Text selection: the cursor circle's green-yellow, with the electric blue
+   it inverts text to. Same in every theme. */
+::selection {
+  background: #d4ff00;
+  color: #2b00ff;
+}
+
 /* Form controls don't inherit the page font by default. */
 button, input, select, textarea { font: inherit; }
 
