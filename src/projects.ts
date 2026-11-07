@@ -107,10 +107,13 @@ const dxb: Project = {
   coverAlt: "Cover image for DXB | Dubai Airport",
 };
 
-// Project 4 — uses the uploaded images in assets/projects/project-4/.
-const project4: Project = {
-  ...placeholderProject(4, "Film", "2025"),
-  cover: "assets/projects/project-4/cover.webp",
+// City Briefings — uses the images in assets/projects/city-briefings/.
+const cityBriefings: Project = {
+  ...placeholderProject(4, "Event", "2025-2026"),
+  slug: "city-briefings",
+  title: "City Briefings",
+  roles: ["Art Direction", "Design"],
+  cover: "assets/projects/city-briefings/cover.webp",
   coverAlt: "Walnut nesting tables with white tile inlays in a sunlit room",
   sections: [
     {
@@ -118,7 +121,7 @@ const project4: Project = {
       body: lorem,
       assets: [
         {
-          src: "assets/projects/project-4/01.webp",
+          src: "assets/projects/city-briefings/01.webp",
           alt: "Top-down view of the tables set with food, hands holding a bowl of lemons and mint",
         },
       ],
@@ -128,7 +131,7 @@ const project4: Project = {
       body: lorem,
       assets: [
         {
-          src: "assets/projects/project-4/02.gif",
+          src: "assets/projects/city-briefings/02.gif",
           alt: "Animated close-ups of the patterned walnut tabletops",
         },
       ],
@@ -138,7 +141,7 @@ const project4: Project = {
       body: lorem,
       assets: [
         {
-          src: "assets/projects/project-4/03.gif",
+          src: "assets/projects/city-briefings/03.gif",
           alt: "Animated views of the finished tables styled with food in a bright room",
         },
       ],
@@ -150,7 +153,7 @@ export const projects: Project[] = [
   loccitane,
   lavinaTea,
   dxb,
-  project4,
+  cityBriefings,
   placeholderProject(5, "Website", "2024"),
   placeholderProject(6, "Art direction", "2024"),
 ];
