@@ -23,7 +23,7 @@ One-page static site: HTML + CSS + TypeScript (compiled with `tsc`, no bundler).
 
 ## Colour themes
 Visitors pick a theme with the circles in the header; the choice is remembered.
-With no choice saved, the site follows the device's light/dark setting.
+With no choice saved, the site opens in dark.
 To add a theme:
 1. add a `[data-theme="<id>"] { … }` block of colours in `public/styles.css`
 2. add `{ id, label, swatch }` to the list in `src/theme.ts`

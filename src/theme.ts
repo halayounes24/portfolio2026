@@ -17,12 +17,12 @@ export const themes: Theme[] = [
 const STORAGE_KEY = "theme";
 const root = document.documentElement;
 
-/** The theme in effect: the saved choice, or the device's light/dark setting. */
+/** Theme used until the visitor picks one. */
+const DEFAULT_THEME = "dark";
+
+/** The theme in effect: the saved choice, or the default. */
 function currentTheme(): string {
-  return (
-    root.dataset.theme ??
-    (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
-  );
+  return root.dataset.theme ?? DEFAULT_THEME;
 }
 
 function applyTheme(id: string): void {
@@ -57,9 +57,6 @@ function mountThemeSwitch(container: HTMLElement): void {
     applyTheme(button.dataset.themeId);
     sync();
   });
-
-  // Keep the active circle right if the device setting changes and nothing is saved.
-  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", sync);
 
   container.replaceChildren(...buttons);
   sync();

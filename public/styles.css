@@ -23,21 +23,13 @@
 }
 
 /* ---------- Colour themes ----------
-   Each theme sets the same five colours. The visitor picks one with the
-   circles in the header (see src/theme.ts); with no choice saved, the site
-   follows the device's light/dark setting.
+   Each theme sets the same five colours. The site opens in dark; visitors
+   can switch with the circles in the header (see src/theme.ts) and their
+   choice is remembered.
    To add a theme: add a block here AND an entry in src/theme.ts. */
 
+/* Default (no choice saved yet) = dark */
 :root,
-[data-theme="light"] {
-  color-scheme: light;
-  --bg: #f6f4ef;
-  --fg: #1a1a1a;
-  --muted: #6b6760;
-  --line: #e3dfd6;
-  --accent: #ff5a36;
-}
-
 [data-theme="dark"] {
   color-scheme: dark;
   --bg: #121212;
@@ -47,15 +39,13 @@
   --accent: #ff5a36;
 }
 
-/* No saved choice yet: follow the device setting. Keep in sync with "dark" above. */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme]) {
-    color-scheme: dark;
-    --bg: #121212;
-    --fg: #f1efe9;
-    --muted: #9c978e;
-    --line: #2c2c2c;
-  }
+[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f6f4ef;
+  --fg: #1a1a1a;
+  --muted: #6b6760;
+  --line: #e3dfd6;
+  --accent: #ff5a36;
 }
 
 @media (prefers-reduced-motion: reduce) {
