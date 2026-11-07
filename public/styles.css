@@ -112,28 +112,34 @@ a { color: inherit; }
   white-space: nowrap;
 }
 
-/* ---------- Site header + tabs ---------- */
+/* ---------- Site header + tabs ----------
+   Wide screens: name on the left half; the right half is split into four
+   equal columns — Projects, Info, Contact, and the colour circles at the
+   far right. Narrow screens: one compact row. */
 .site-header {
   --header-h: 4rem;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
-  justify-content: space-between;
   gap: 1rem;
   height: var(--header-h);
   padding-inline: var(--gutter);
 }
 
 .site-header__name {
+  justify-self: start;
   font-weight: 500;
   text-decoration: none;
   white-space: nowrap;
 }
 
 .site-header__right {
-  display: flex;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
   align-items: center;
-  gap: clamp(0.5rem, 2vw, 1.5rem);
 }
+
+.site-header__right .theme-switch { justify-self: end; }
 
 /* Theme switcher: one circle per colour theme */
 .theme-switch {
@@ -161,15 +167,15 @@ a { color: inherit; }
 
 .tabs-nav {
   list-style: none;
-  display: flex;
-  gap: clamp(0.25rem, 1.5vw, 0.75rem);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   margin: 0;
   padding: 0;
 }
 
 .tabs-nav a {
-  display: block;
-  padding: 0.4rem 0.75rem;
+  display: inline-block;
+  padding-block: 0.4rem;
   color: var(--fg);
   font-size: 0.95rem;
   text-decoration: none;
@@ -181,8 +187,13 @@ a { color: inherit; }
 .tabs-nav a:focus-visible,
 .site-header__name:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
+@media (max-width: 720px) {
+  .site-header { display: flex; justify-content: space-between; }
+  .site-header__right { display: flex; gap: 1rem; }
+  .tabs-nav { display: flex; gap: clamp(0.75rem, 3vw, 1.25rem); }
+}
 @media (max-width: 420px) {
-  .tabs-nav a { padding-inline: 0.5rem; font-size: 0.9rem; }
+  .tabs-nav a { font-size: 0.9rem; }
 }
 
 /* ---------- Intro ----------
