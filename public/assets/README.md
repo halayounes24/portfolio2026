@@ -5,7 +5,7 @@ Everything in this folder is published with the site as-is.
 ```
 assets/
 ├── projects/        one folder per project (folder name = project slug)
-│   ├── project-1/
+│   ├── loccitane/
 │   │   ├── cover.jpg    used on the landing page column and project page header
 │   │   ├── 01.jpg       images shown in the project story, in order
 │   │   ├── 02.jpg
@@ -34,7 +34,7 @@ assets/
 
 ## Using an asset
 Uploading a file doesn't show it on the site yet — reference it in `src/projects.ts`,
-e.g. `cover: "assets/projects/project-1/cover.jpg"`, or in the page's HTML.
+e.g. `cover: "assets/projects/loccitane/cover.webp"`, or in the page's HTML.
 
 ## Uploading on github.com
 Open the folder in the repo → **Add file → Upload files** → drag files in → commit.

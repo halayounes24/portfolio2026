@@ -3,8 +3,7 @@ import { projectUrl, type Project } from "./projects.js";
 
 /**
  * Landing-page project list. Each row links to the project page:
- *   left   — client and year (small, two lines)
- *   middle — project name (large)
+ *   left   — year (small), with the project name (large) underneath
  *   right  — project type (small)
  */
 function renderRow(project: Project): HTMLLIElement {
@@ -13,8 +12,7 @@ function renderRow(project: Project): HTMLLIElement {
   const link = el("a", "project-row__link");
   link.href = projectUrl(project);
 
-  const meta = el("p", "project-row__meta");
-  meta.append(el("span", undefined, project.client), el("span", undefined, project.year));
+  const meta = el("p", "project-row__meta", project.year);
 
   link.append(
     meta,

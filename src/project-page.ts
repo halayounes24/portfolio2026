@@ -25,7 +25,7 @@ function renderProject(project: Project): DocumentFragment {
   );
 
   const facts = el("dl", "project__facts");
-  for (const f of [{ label: "Client", value: project.client }, ...project.facts]) {
+  for (const f of project.facts) {
     const row = el("div");
     row.append(el("dt", undefined, f.label), el("dd", undefined, f.value));
     facts.append(row);

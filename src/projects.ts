@@ -15,8 +15,6 @@ export interface Project {
   /** Used in the URL: project.html?p=<slug> */
   slug: string;
   title: string;
-  /** Who the project was for. */
-  client: string;
   /** Kind of project, e.g. Campaign, Brand identity, Film. */
   type: string;
   year: string;
@@ -39,13 +37,12 @@ const lorem =
   "Placeholder copy. Replace this with a few sentences in your own words. " +
   "Keep it concrete: what the situation was, what you did, and why it mattered.";
 
-const project1: Project = {
-  slug: "project-1",
-  title: "Project 1", // TODO: real name
-  client: "Client name", // TODO
-  type: "Product design", // TODO
-  year: "2026", // TODO
-  cover: "assets/projects/project-1/cover.webp",
+const loccitane: Project = {
+  slug: "loccitane",
+  title: "L'Occitane En Provence",
+  type: "Campaign",
+  year: "2023",
+  cover: "assets/projects/loccitane/cover.webp",
   coverAlt: "Walnut nesting tables with white tile inlays in a sunlit room",
   overview: "A one or two sentence overview of the project: what it is and who it was for.",
   facts: [
@@ -60,7 +57,7 @@ const project1: Project = {
       body: lorem,
       assets: [
         {
-          src: "assets/projects/project-1/01.webp",
+          src: "assets/projects/loccitane/01.webp",
           alt: "Top-down view of the tables set with food, hands holding a bowl of lemons and mint",
         },
       ],
@@ -70,7 +67,7 @@ const project1: Project = {
       body: lorem,
       assets: [
         {
-          src: "assets/projects/project-1/02.gif",
+          src: "assets/projects/loccitane/02.gif",
           alt: "Animated close-ups of the patterned walnut tabletops",
         },
       ],
@@ -80,7 +77,7 @@ const project1: Project = {
       body: lorem,
       assets: [
         {
-          src: "assets/projects/project-1/03.gif",
+          src: "assets/projects/loccitane/03.gif",
           alt: "Animated views of the finished tables styled with food in a bright room",
         },
       ],
@@ -97,7 +94,6 @@ function placeholderProject(n: number, type: string, year: string): Project {
   return {
     slug: `project-${n}`,
     title: `Project ${n}`,
-    client: "Client name",
     type,
     year,
     cover: `assets/placeholders/project-${n}.svg`,
@@ -119,7 +115,7 @@ function placeholderProject(n: number, type: string, year: string): Project {
 }
 
 export const projects: Project[] = [
-  project1,
+  loccitane,
   placeholderProject(2, "Brand identity", "2026"),
   placeholderProject(3, "Campaign", "2025"),
   placeholderProject(4, "Film", "2025"),

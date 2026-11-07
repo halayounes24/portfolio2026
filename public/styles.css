@@ -234,7 +234,7 @@ a { color: inherit; }
 }
 
 /* Project list: one row per project, separated by thin rules.
-   left = client + year, middle = project name, right = project type. */
+   left = year + project name, right = project type. */
 .project-list {
   list-style: none;
   margin: 0;
@@ -260,7 +260,7 @@ a { color: inherit; }
   transition: opacity 200ms, padding-block var(--dur) var(--ease);
 }
 
-/* Left side, top to bottom: client, year, then the project name. */
+/* Left side, top to bottom: year, then the project name. */
 .project-row__meta {
   grid-area: meta;
   display: grid;
@@ -269,7 +269,6 @@ a { color: inherit; }
   font-weight: 500;
   line-height: 1.35;
 }
-.project-row__meta span + span { color: var(--muted); }
 
 .project-row__title {
   grid-area: title;
