@@ -9,6 +9,7 @@
   --fs-body: clamp(0.85rem, 1vw, 0.95rem);  /* paragraphs, facts */
   --fs-lead: clamp(1.2rem, 2vw, 1.75rem);   /* intro statements */
   --fs-title: clamp(1.15rem, 1.8vw, 1.6rem);/* project names, page titles (display style) */
+  --fs-display: clamp(1.9rem, 4vw, 3.5rem); /* project name on its own page */
 
   /* Vertical rhythm — the landing intro's spacing, reused for every page header. */
   --space-top: clamp(2.5rem, 9vh, 6rem);    /* above a page's first heading */
@@ -365,21 +366,31 @@ a { color: inherit; }
   padding-top: var(--space-section); /* the back link already sits above */
 }
 
-.project__title { padding-right: var(--gutter); } /* long names wrap within the left half */
+/* Bigger on its own page; long names wrap to two lines within the left half. */
+.project .project__title {
+  padding-right: var(--gutter);
+  font-size: var(--fs-display);
+  line-height: 0.95;
+}
 
 .project__info {
   display: grid;
-  gap: var(--space-section);
+  gap: 1.25rem; /* between Project info and Year / Role */
 }
 
+/* Label and value share one size; the label is bold, the value muted. */
+.project__label,
+.project__text {
+  font-size: var(--fs-body);
+  line-height: 1.4;
+}
 .project__label {
   margin: 0;
-  font-size: var(--fs-label);
-  font-weight: 500;
+  font-weight: 700;
   color: var(--fg);
 }
 .project__text {
-  margin: 0.35rem 0 0;
+  margin: 0.15rem 0 0;
   max-width: 60ch;
   color: var(--muted);
 }
@@ -482,7 +493,7 @@ a { color: inherit; }
 .project__next a:hover { font-style: italic; }
 
 @media (max-width: 720px) {
-  .project__header { grid-template-columns: 1fr; row-gap: var(--space-section); }
+  .project__header { grid-template-columns: 1fr; row-gap: 2rem; }
   .project__title { padding-right: 0; }
   .project__details { grid-template-columns: 1fr 2fr; }
   .project__details div:last-child { grid-column: auto; }
