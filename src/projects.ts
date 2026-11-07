@@ -28,7 +28,8 @@ export interface Project {
   /** "Project info" text shown on the project page. */
   overview: string;
   sections: Section[];
-  link?: { label: string; href: string };
+  /** Credits listed at the end of the project page (optional). */
+  credits?: { role: string; name: string }[];
 }
 
 // ---------------------------------------------------------------------------
@@ -60,7 +61,6 @@ function placeholderProject(n: number, type: string, year: string): Project {
       { heading: "What I did", body: lorem, assets: [placeholderTall, placeholderSquare] },
       { heading: "The outcome", body: lorem, assets: [placeholderWide] },
     ],
-    link: { label: "Visit live project", href: "#" },
   };
 }
 
@@ -75,6 +75,15 @@ const loccitane: Project = {
   coverAlt:
     "L'Occitane gift box illustrated with a moonlit village, surrounded by arch-shaped packaging, lanterns and L'Occitane products",
   hoverImage: "assets/projects/loccitane/cover-thumb.webp",
+  // Placeholder credits — replace with the real names.
+  credits: [
+    { role: "Client", name: "L'Occitane En Provence" },
+    { role: "Art Direction", name: "Hala Younes" },
+    { role: "Styling", name: "Hala Younes" },
+    { role: "Photography", name: "Photographer Name" },
+    { role: "Set Design", name: "Set Designer Name" },
+    { role: "Production", name: "Studio Name" },
+  ],
 };
 
 // Project 4 — uses the uploaded images in assets/projects/project-4/.

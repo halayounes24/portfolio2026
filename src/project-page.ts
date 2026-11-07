@@ -58,11 +58,17 @@ function renderProject(project: Project): DocumentFragment {
     frag.append(s);
   }
 
-  if (project.link) {
-    const a = el("a", "project__cta", project.link.label);
-    a.href = project.link.href;
-    a.rel = "noopener";
-    frag.append(a);
+  // Credits: label on the left, list in the right half under the tabs.
+  if (project.credits?.length) {
+    const credits = el("section", "project__credits");
+    const list = el("dl", "project__credits-list");
+    for (const c of project.credits) {
+      const item = el("div");
+      item.append(el("dt", "project__label", c.role), el("dd", "project__text", c.name));
+      list.append(item);
+    }
+    credits.append(el("h2", "project__label", "Credits"), list);
+    frag.append(credits);
   }
 
   // Next project
