@@ -8,7 +8,6 @@
   --line: #e3dfd6;
   --accent: #ff5a36;
 
-  --radius: 14px;
   --gutter: clamp(16px, 4vw, 48px);
   --max: 1200px;  /* content width */
   --frame: calc(var(--max) + 2 * var(--gutter)); /* content width + side gutters */
@@ -80,7 +79,6 @@ a { color: inherit; }
 .tags li {
   padding: 0.2rem 0.65rem;
   border: 1px solid currentColor;
-  border-radius: 999px;
   font-size: 0.8rem;
   white-space: nowrap;
 }
@@ -370,7 +368,6 @@ a { color: inherit; }
 
 .project__cover {
   margin: 0 0 clamp(3rem, 10vh, 6rem);
-  border-radius: var(--radius);
   overflow: hidden;
   aspect-ratio: 16 / 9;
   background: var(--line);
@@ -401,7 +398,6 @@ a { color: inherit; }
 .asset { margin: 0; }
 .asset img {
   width: 100%;
-  border-radius: var(--radius);
   background: var(--line);
 }
 .asset figcaption {
@@ -413,7 +409,6 @@ a { color: inherit; }
 .project__cta {
   display: inline-block;
   padding: 0.85rem 1.4rem;
-  border-radius: 999px;
   background: var(--fg);
   color: var(--bg);
   font-weight: 600;
