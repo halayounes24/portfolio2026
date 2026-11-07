@@ -117,6 +117,16 @@ const tabliye: Project = {
   coverAlt: "Cover image for Tabliyè",
 };
 
+// GITEX — real details; images are placeholders until uploaded
+// to assets/projects/gitex/.
+const gitex: Project = {
+  ...placeholderProject(6, "Art Direction", "2024"),
+  slug: "gitex",
+  title: "GITEX",
+  roles: ["Booth Design"],
+  coverAlt: "Cover image for GITEX",
+};
+
 // City Briefings — uses the images in assets/projects/city-briefings/.
 const cityBriefings: Project = {
   ...placeholderProject(4, "Event", "2025-2026"),
@@ -165,7 +175,7 @@ export const projects: Project[] = [
   dxb,
   cityBriefings,
   tabliye,
-  placeholderProject(6, "Art direction", "2024"),
+  gitex,
 ];
 
 export function findProject(slug: string | null): Project | undefined {
