@@ -33,6 +33,9 @@
   --line: #2c2c2c;
   --rule: color-mix(in srgb, var(--fg) 30%, transparent); /* list dividers */
   --accent: #ff5a36;
+  /* Cursor circle. It's drawn in "difference" mode, so this value is chosen
+     to *appear* bright green-yellow on this theme's background. */
+  --cursor: #e6ff12;
 }
 
 [data-theme="light"] {
@@ -43,6 +46,7 @@
   --line: #e3dfd6;
   --rule: color-mix(in srgb, var(--fg) 30%, transparent); /* list dividers */
   --accent: #ff5a36;
+  --cursor: #2200ef; /* appears green-yellow on the light background */
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -59,7 +63,10 @@
 /* ---------- Base ---------- */
 *, *::before, *::after { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  background: var(--bg); /* lets the cursor circle blend against the page colour */
+}
 
 body {
   margin: 0;
@@ -495,6 +502,23 @@ a { color: inherit; }
   .info { grid-template-columns: 1fr; }
   .info__portrait { max-width: 20rem; }
 }
+
+/* ---------- Cursor follower (see src/cursor.ts) ---------- */
+.cursor-follower {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  background: var(--cursor);
+  mix-blend-mode: difference; /* inverts what's underneath, e.g. white text */
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 200ms;
+}
+.cursor-follower.is-visible { opacity: 1; }
 
 /* ---------- Footer ---------- */
 .footer {

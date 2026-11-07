@@ -18,6 +18,7 @@ One-page static site: HTML + CSS + TypeScript (compiled with `tsc`, no bundler).
   - `project-list.ts` — renders the landing-page project list
   - `project-page.ts` — renders a project page from the `?p=` slug
   - `theme.ts` — colour themes and the header switcher (circles)
+  - `cursor.ts` — the green-yellow circle that follows the mouse (colour per theme: `--cursor` in `styles.css`)
   - `main.ts` — landing page entry point
   - `dom.ts` — small DOM helpers
 
