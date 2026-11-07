@@ -134,14 +134,14 @@ a { color: inherit; }
 .tabs-nav a {
   display: block;
   padding: 0.4rem 0.75rem;
-  border: 1px solid transparent;
-  color: var(--muted);
+  color: var(--fg);
   font-size: 0.95rem;
   text-decoration: none;
-  transition: color 150ms, border-color 150ms;
+  opacity: 0.35;              /* other tabs are dimmed */
+  transition: opacity 150ms;
 }
-.tabs-nav a:hover { color: var(--fg); border-color: var(--line); }
-.tabs-nav a[aria-current="page"] { color: var(--fg); border-color: var(--fg); }
+.tabs-nav a:hover { opacity: 0.7; }
+.tabs-nav a[aria-current="page"] { opacity: 1; } /* current tab is at full strength */
 .tabs-nav a:focus-visible,
 .site-header__name:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
