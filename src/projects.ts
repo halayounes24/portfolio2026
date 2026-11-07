@@ -97,6 +97,16 @@ const lavinaTea: Project = {
   coverAlt: "Cover image for Lavina Tea",
 };
 
+// DXB | Dubai Airport — real details; images are placeholders until uploaded
+// to assets/projects/dxb/.
+const dxb: Project = {
+  ...placeholderProject(3, "Campaign", "2026"),
+  slug: "dxb",
+  title: "DXB | Dubai Airport",
+  roles: ["Art Direction", "Design"],
+  coverAlt: "Cover image for DXB | Dubai Airport",
+};
+
 // Project 4 — uses the uploaded images in assets/projects/project-4/.
 const project4: Project = {
   ...placeholderProject(4, "Film", "2025"),
@@ -139,7 +149,7 @@ const project4: Project = {
 export const projects: Project[] = [
   loccitane,
   lavinaTea,
-  placeholderProject(3, "Campaign", "2025"),
+  dxb,
   project4,
   placeholderProject(5, "Website", "2024"),
   placeholderProject(6, "Art direction", "2024"),
