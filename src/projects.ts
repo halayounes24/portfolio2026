@@ -108,14 +108,46 @@ const dxb: Project = {
   coverAlt: "Cover image for DXB | Dubai Airport",
 };
 
-// Tabliyè — real details; images are placeholders until uploaded
-// to assets/projects/tabliye/.
+// Tabliyè — uses the images in assets/projects/tabliye/.
 const tabliye: Project = {
   ...placeholderProject(5, "Product", "2017"),
   slug: "tabliye",
   title: "Tabliyè",
   roles: ["Industrial Design", "Furniture Design"],
-  coverAlt: "Cover image for Tabliyè",
+  cover: "assets/projects/tabliye/cover.webp",
+  coverAlt: "Walnut nesting tables with white tile inlays in a sunlit room",
+  sections: [
+    {
+      heading: "The challenge",
+      body: lorem,
+      assets: [
+        {
+          src: "assets/projects/tabliye/01.webp",
+          alt: "Top-down view of the tables set with food, hands holding a bowl of lemons and mint",
+        },
+      ],
+    },
+    {
+      heading: "What I did",
+      body: lorem,
+      assets: [
+        {
+          src: "assets/projects/tabliye/02.gif",
+          alt: "Animated close-ups of the patterned walnut tabletops",
+        },
+      ],
+    },
+    {
+      heading: "The outcome",
+      body: lorem,
+      assets: [
+        {
+          src: "assets/projects/tabliye/03.gif",
+          alt: "Animated views of the finished tables styled with food in a bright room",
+        },
+      ],
+    },
+  ],
 };
 
 // GITEX — real details; images are placeholders until uploaded
@@ -128,47 +160,16 @@ const gitex: Project = {
   coverAlt: "Cover image for GITEX",
 };
 
-// City Briefings — uses the images in assets/projects/city-briefings/.
+// City Briefings — real details; images are placeholders until uploaded
+// to assets/projects/city-briefings/.
 const cityBriefings: Project = {
   ...placeholderProject(4, "Event", "2025-2026"),
   slug: "city-briefings",
   title: "City Briefings",
   roles: ["Art Direction", "Graphic Design"],
-  cover: "assets/projects/city-briefings/cover.webp",
-  coverAlt: "Walnut nesting tables with white tile inlays in a sunlit room",
-  sections: [
-    {
-      heading: "The challenge",
-      body: lorem,
-      assets: [
-        {
-          src: "assets/projects/city-briefings/01.webp",
-          alt: "Top-down view of the tables set with food, hands holding a bowl of lemons and mint",
-        },
-      ],
-    },
-    {
-      heading: "What I did",
-      body: lorem,
-      assets: [
-        {
-          src: "assets/projects/city-briefings/02.gif",
-          alt: "Animated close-ups of the patterned walnut tabletops",
-        },
-      ],
-    },
-    {
-      heading: "The outcome",
-      body: lorem,
-      assets: [
-        {
-          src: "assets/projects/city-briefings/03.gif",
-          alt: "Animated views of the finished tables styled with food in a bright room",
-        },
-      ],
-    },
-  ],
+  coverAlt: "Cover image for City Briefings",
 };
+
 
 // Ajman University Executive Education — real details; images to come
 // (images go in assets/projects/ajman-university/).
