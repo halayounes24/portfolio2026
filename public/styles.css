@@ -509,8 +509,8 @@ a { color: inherit; }
   top: 0;
   left: 0;
   z-index: 1000;
-  width: 1.75rem;
-  height: 1.75rem;
+  width: 0.875rem;  /* 14px */
+  height: 0.875rem;
   border-radius: 50%;
   background: var(--cursor);
   mix-blend-mode: difference; /* inverts what's underneath, e.g. white text */
