@@ -117,6 +117,7 @@ a { color: inherit; }
 
 .site-header__name {
   justify-self: start;
+  font-size: 0.8rem;
   font-weight: 500;
   text-decoration: none;
   white-space: nowrap;
@@ -166,7 +167,7 @@ a { color: inherit; }
   display: inline-block;
   padding-block: 0.4rem;
   color: var(--fg);
-  font-size: 0.95rem;
+  font-size: 0.8rem;
   text-decoration: none;
   opacity: 0.35;              /* other tabs are dimmed */
   transition: opacity 150ms;
@@ -185,7 +186,7 @@ a { color: inherit; }
 @media (max-width: 480px) {
   .site-header { gap: 0.5rem; }
   .site-header__name,
-  .tabs-nav a { font-size: 0.78rem; }
+  .tabs-nav a { font-size: 0.72rem; }
   .site-header__right { gap: 0.6rem; }
   .tabs-nav { gap: 0.6rem; }
   .theme-switch { gap: 0.4rem; }
@@ -193,7 +194,7 @@ a { color: inherit; }
 }
 @media (max-width: 350px) {
   .site-header__name,
-  .tabs-nav a { font-size: 0.7rem; }
+  .tabs-nav a { font-size: 0.66rem; }
   .site-header__right,
   .tabs-nav { gap: 0.45rem; }
 }
@@ -206,18 +207,18 @@ a { color: inherit; }
 
 .intro__lead {
   margin: 0;
-  max-width: 26ch;
-  font-size: clamp(1.75rem, 4vw, 3.25rem);
+  max-width: 40ch;
+  font-size: clamp(1.2rem, 2vw, 1.75rem);
   font-weight: 400;
-  line-height: 1.08;
-  letter-spacing: -0.02em;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
 }
 
 .intro__sub {
   margin: 1.25rem 0 0;
   max-width: 52ch;
   color: var(--muted);
-  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  font-size: clamp(0.85rem, 1vw, 0.95rem);
 }
 
 /* ---------- Work / Accordion ---------- */
@@ -257,7 +258,7 @@ a { color: inherit; }
   grid-area: meta;
   display: grid;
   margin: 0;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   font-weight: 500;
   line-height: 1.35;
 }
@@ -266,14 +267,14 @@ a { color: inherit; }
 .project-row__title {
   grid-area: title;
   margin: 0;
-  font-size: clamp(1.6rem, 3vw, 2.75rem);
+  font-size: clamp(1.15rem, 1.8vw, 1.6rem);
   line-height: 1.05;
 }
 
 .project-row__type {
   grid-area: type;
   margin: 0;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   text-align: right;
 }
 
