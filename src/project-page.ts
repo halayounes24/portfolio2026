@@ -29,6 +29,7 @@ function renderProject(project: Project): DocumentFragment {
     ["Year", project.year],
     ["Role", project.roles.join(" / ")],
   ]) {
+    if (!value) continue; // e.g. year not known yet
     const item = el("div");
     item.append(el("dt", "project__label", label), el("dd", "project__text", value));
     details.append(item);

@@ -13,7 +13,7 @@ function renderRow(project: Project): HTMLLIElement {
   link.href = projectUrl(project);
   if (project.hoverImage) link.dataset.hoverImage = project.hoverImage;
 
-  const meta = el("p", "project-row__meta", `${project.type} / ${project.year}`);
+  const meta = el("p", "project-row__meta", [project.type, project.year].filter(Boolean).join(" / "));
 
   link.append(
     meta,

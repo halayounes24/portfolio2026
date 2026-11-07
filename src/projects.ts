@@ -17,6 +17,7 @@ export interface Project {
   title: string;
   /** Kind of project, e.g. Campaign, Brand identity, Film. */
   type: string;
+  /** Leave empty ("") if unknown — the row then shows only the type, and the page omits Year. */
   year: string;
   /** What you did on the project, e.g. ["Art Direction", "Styling"]. */
   roles: string[];
@@ -169,6 +170,25 @@ const cityBriefings: Project = {
   ],
 };
 
+// Ajman University Executive Education — real details; year and images to come
+// (images go in assets/projects/ajman-university/).
+const ajman: Project = {
+  ...placeholderProject(7, "Branding", ""),
+  slug: "ajman-university",
+  title: "Ajman University Executive Education",
+  roles: ["Art Direction", "Graphic Design"],
+  coverAlt: "Cover image for Ajman University Executive Education",
+};
+
+// Fluidity — real details; year and images to come (assets/projects/fluidity/).
+const fluidity: Project = {
+  ...placeholderProject(8, "Exhibition", ""),
+  slug: "fluidity",
+  title: "Fluidity",
+  roles: ["Art Direction", "Styling"],
+  coverAlt: "Cover image for Fluidity",
+};
+
 export const projects: Project[] = [
   loccitane,
   lavinaTea,
@@ -176,6 +196,8 @@ export const projects: Project[] = [
   cityBriefings,
   tabliye,
   gitex,
+  ajman,
+  fluidity,
 ];
 
 export function findProject(slug: string | null): Project | undefined {
