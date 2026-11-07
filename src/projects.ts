@@ -103,7 +103,7 @@ const dxb: Project = {
   ...placeholderProject(3, "Campaign", "2026"),
   slug: "dxb",
   title: "DXB | Dubai Airport",
-  roles: ["Art Direction", "Design"],
+  roles: ["Art Direction", "Graphic Design"],
   coverAlt: "Cover image for DXB | Dubai Airport",
 };
 
@@ -123,7 +123,7 @@ const gitex: Project = {
   ...placeholderProject(6, "Event", "2024"),
   slug: "gitex",
   title: "GITEX",
-  roles: ["Art Direction", "Design"],
+  roles: ["Art Direction", "Graphic Design"],
   coverAlt: "Cover image for GITEX",
 };
 
@@ -132,7 +132,7 @@ const cityBriefings: Project = {
   ...placeholderProject(4, "Event", "2025-2026"),
   slug: "city-briefings",
   title: "City Briefings",
-  roles: ["Art Direction", "Design"],
+  roles: ["Art Direction", "Graphic Design"],
   cover: "assets/projects/city-briefings/cover.webp",
   coverAlt: "Walnut nesting tables with white tile inlays in a sunlit room",
   sections: [
