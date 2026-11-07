@@ -39,54 +39,6 @@ const lorem =
   "Placeholder copy. Replace this with a few sentences in your own words. " +
   "Keep it concrete: what the situation was, what you did, and why it mattered.";
 
-const loccitane: Project = {
-  slug: "loccitane",
-  title: "L'Occitane En Provence",
-  type: "Campaign",
-  year: "2023",
-  roles: ["Art Direction", "Styling"],
-  cover: "assets/projects/loccitane/cover.webp",
-  coverAlt: "Walnut nesting tables with white tile inlays in a sunlit room",
-  overview: "A one or two sentence overview of the project: what it is and who it was for.",
-  facts: [
-    { label: "Team", value: "Who you worked with" },
-    { label: "Materials", value: "Walnut, …" },
-    { label: "Duration", value: "3 months" },
-  ],
-  sections: [
-    {
-      heading: "The challenge",
-      body: lorem,
-      assets: [
-        {
-          src: "assets/projects/loccitane/01.webp",
-          alt: "Top-down view of the tables set with food, hands holding a bowl of lemons and mint",
-        },
-      ],
-    },
-    {
-      heading: "What I did",
-      body: lorem,
-      assets: [
-        {
-          src: "assets/projects/loccitane/02.gif",
-          alt: "Animated close-ups of the patterned walnut tabletops",
-        },
-      ],
-    },
-    {
-      heading: "The outcome",
-      body: lorem,
-      assets: [
-        {
-          src: "assets/projects/loccitane/03.gif",
-          alt: "Animated views of the finished tables styled with food in a bright room",
-        },
-      ],
-    },
-  ],
-};
-
 // Temporary filler for projects that don't have real content yet.
 const placeholderWide: Asset = { src: "assets/placeholders/asset-wide.svg", alt: "Placeholder asset (wide)", caption: "Caption for this asset." };
 const placeholderTall: Asset = { src: "assets/placeholders/asset-tall.svg", alt: "Placeholder asset (tall)", caption: "Caption for this asset." };
@@ -103,7 +55,7 @@ function placeholderProject(n: number, type: string, year: string): Project {
     coverAlt: `Cover image for project ${n}`,
     overview: "A one or two sentence overview of the project: what it is and who it was for.",
     facts: [
-        { label: "Team", value: "Who you worked with" },
+      { label: "Team", value: "Who you worked with" },
       { label: "Tools", value: "Figma, TypeScript, …" },
       { label: "Duration", value: "3 months" },
     ],
@@ -116,11 +68,65 @@ function placeholderProject(n: number, type: string, year: string): Project {
   };
 }
 
+// L'Occitane En Provence — real details; images are placeholders until uploaded
+// to assets/projects/loccitane/.
+const loccitane: Project = {
+  ...placeholderProject(1, "Campaign", "2023"),
+  slug: "loccitane",
+  title: "L'Occitane En Provence",
+  roles: ["Art Direction", "Styling"],
+  coverAlt: "Cover image for L'Occitane En Provence",
+};
+
+// Project 4 — uses the uploaded images in assets/projects/project-4/.
+const project4: Project = {
+  ...placeholderProject(4, "Film", "2025"),
+  cover: "assets/projects/project-4/cover.webp",
+  coverAlt: "Walnut nesting tables with white tile inlays in a sunlit room",
+  facts: [
+    { label: "Team", value: "Who you worked with" },
+    { label: "Materials", value: "Walnut, …" },
+    { label: "Duration", value: "3 months" },
+  ],
+  sections: [
+    {
+      heading: "The challenge",
+      body: lorem,
+      assets: [
+        {
+          src: "assets/projects/project-4/01.webp",
+          alt: "Top-down view of the tables set with food, hands holding a bowl of lemons and mint",
+        },
+      ],
+    },
+    {
+      heading: "What I did",
+      body: lorem,
+      assets: [
+        {
+          src: "assets/projects/project-4/02.gif",
+          alt: "Animated close-ups of the patterned walnut tabletops",
+        },
+      ],
+    },
+    {
+      heading: "The outcome",
+      body: lorem,
+      assets: [
+        {
+          src: "assets/projects/project-4/03.gif",
+          alt: "Animated views of the finished tables styled with food in a bright room",
+        },
+      ],
+    },
+  ],
+};
+
 export const projects: Project[] = [
   loccitane,
   placeholderProject(2, "Brand identity", "2026"),
   placeholderProject(3, "Campaign", "2025"),
-  placeholderProject(4, "Film", "2025"),
+  project4,
   placeholderProject(5, "Website", "2024"),
   placeholderProject(6, "Art direction", "2024"),
 ];
