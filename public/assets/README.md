@@ -13,7 +13,7 @@ assets/
 │   └── …
 ├── info/            images for the Info page (e.g. portrait.jpg)
 ├── site/            site-wide images: favicon, social share image
-├── fonts/           self-hosted Readex Pro font files
+├── fonts/           self-hosted Archivo font files
 └── placeholders/    temporary filler images — delete once real assets are in
 ```
 
@@ -41,6 +41,6 @@ Open the folder in the repo → **Add file → Upload files** → drag files in 
 Committing to `main` redeploys the site automatically.
 
 ## Fonts
-`fonts/` holds the self-hosted Readex Pro font (`readex-pro.css` + `.woff2` files,
+`fonts/` holds the self-hosted Archivo font (`archivo.css` + `.woff2` files,
 licensed under the SIL Open Font License — see `fonts/OFL.txt`). Every page links
-`assets/fonts/readex-pro.css`; don't upload other files here unless you're adding a font.
+`assets/fonts/archivo.css`; don't upload other files here unless you're adding a font.

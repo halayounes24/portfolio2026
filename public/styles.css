@@ -20,7 +20,14 @@
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
   --dur: 450ms;
 
-  font-family: "Readex Pro", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  /* Typography: one family (Archivo). Regular for reading, medium for UI,
+     and a heavy condensed "display" style reserved for short titles. */
+  --font: "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --display-weight: 800;
+  --display-stretch: 85%;      /* Archivo's width axis: 62%–125% */
+  --display-tracking: -0.015em;
+
+  font-family: var(--font);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -59,6 +66,17 @@ img { display: block; max-width: 100%; }
 
 /* Form controls don't inherit the page font by default. */
 button, input, select, textarea { font: inherit; }
+
+/* Heavy condensed style — only for short titles (a few words at most). */
+.page__title,
+.project__title,
+.panel__title,
+.panel__spine,
+.project__next-title {
+  font-weight: var(--display-weight);
+  font-stretch: var(--display-stretch);
+  letter-spacing: var(--display-tracking);
+}
 
 a { color: inherit; }
 
@@ -100,7 +118,7 @@ a { color: inherit; }
 }
 
 .site-header__name {
-  font-weight: 600;
+  font-weight: 500;
   text-decoration: none;
   white-space: nowrap;
 }
@@ -150,6 +168,7 @@ a { color: inherit; }
   margin: 0;
   max-width: 22ch;
   font-size: clamp(2rem, 5.5vw, 4.25rem);
+  font-weight: 400;
   line-height: 1.05;
   letter-spacing: -0.02em;
 }
@@ -256,7 +275,6 @@ a { color: inherit; }
   rotate: 180deg;
   white-space: nowrap;
   font-size: clamp(1rem, 1.6vw, 1.35rem);
-  font-weight: 600;
   transition: opacity calc(var(--dur) * 0.6) var(--ease);
 }
 
@@ -342,7 +360,6 @@ a { color: inherit; }
   margin: 0;
   font-size: clamp(2.25rem, 6vw, 4.5rem);
   line-height: 1;
-  letter-spacing: -0.02em;
 }
 .project__header .tags { grid-area: tags; color: var(--muted); }
 
@@ -392,6 +409,7 @@ a { color: inherit; }
 }
 .story__text h2 {
   margin: 0 0 0.75rem;
+  font-weight: 500;
   font-size: clamp(1.25rem, 2vw, 1.6rem);
 }
 .story__text p { margin: 0; color: var(--muted); }
@@ -414,7 +432,7 @@ a { color: inherit; }
   padding: 0.85rem 1.4rem;
   background: var(--fg);
   color: var(--bg);
-  font-weight: 600;
+  font-weight: 500;
   text-decoration: none;
 }
 .project__cta:hover { background: var(--accent); color: #fff; }
@@ -426,7 +444,7 @@ a { color: inherit; }
 }
 .project__next a { display: inline-grid; text-decoration: none; }
 .project__next-label { color: var(--muted); font-size: 0.9rem; }
-.project__next-title { font-size: clamp(1.75rem, 4vw, 3rem); font-weight: 700; }
+.project__next-title { font-size: clamp(1.75rem, 4vw, 3rem); }
 .project__next a:hover .project__next-title { color: var(--accent); }
 
 @media (max-width: 720px) {
@@ -451,7 +469,6 @@ a { color: inherit; }
   margin: 0;
   font-size: clamp(2.25rem, 6vw, 4.5rem);
   line-height: 1;
-  letter-spacing: -0.02em;
 }
 
 .page__lead {
@@ -504,7 +521,7 @@ a { color: inherit; }
   display: inline-block;
   margin-bottom: clamp(2.5rem, 8vh, 4rem);
   font-size: clamp(1.75rem, 5vw, 3.5rem);
-  font-weight: 700;
+  font-weight: 400;
   letter-spacing: -0.02em;
   text-decoration: underline;
   text-decoration-thickness: 2px;
