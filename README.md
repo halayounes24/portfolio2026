@@ -21,6 +21,11 @@ One-page static site: HTML + CSS + TypeScript (compiled with `tsc`, no bundler).
   - `main.ts` — landing page entry point
   - `dom.ts` — small DOM helpers
 
+## Build
+`npm run build` compiles TypeScript, copies `public/` into `dist/`, then runs
+`scripts/stamp.mjs`, which adds `?v=<hash>` to every CSS/JS reference so
+visitors always get the latest files after a deploy (no stale cached styles).
+
 ## Colour themes
 Visitors pick a theme with the circles in the header; the choice is remembered.
 With no choice saved, the site opens in dark.

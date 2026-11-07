@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "clean": "rm -rf dist",
-    "build": "npm run clean && tsc && cp -r public/. dist/ && find dist -name '*.md' -delete",
+    "build": "npm run clean && tsc && cp -r public/. dist/ && find dist -name '*.md' -delete && node scripts/stamp.mjs",
     "typecheck": "tsc --noEmit",
     "serve": "npx --yes serve dist"
   },
