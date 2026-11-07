@@ -562,7 +562,8 @@ a { color: inherit; }
   top: 0;
   left: 0;
   z-index: 900; /* above the page, below the cursor circle */
-  width: clamp(220px, 22vw, 340px);
+  /* Fixed height; width follows each photo's own shape (set in the script). */
+  height: clamp(147px, 14.7vw, 227px);
   aspect-ratio: 3 / 2;
   pointer-events: none;
   opacity: 0;

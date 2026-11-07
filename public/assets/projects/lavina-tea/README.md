@@ -1,7 +1,7 @@
 # lavina-tea
 
 Assets for **Lavina Tea** (slug `lavina-tea` in `src/projects.ts`).
-Currently empty — the project shows placeholder images until files are added here.
+`cover-thumb.webp` is in place (hover preview); the page still shows placeholder images until a cover and story images are added.
 
 - `cover.webp` (or `.jpg`) — cover image (project page header)
 - `cover-thumb.webp` — small version that follows the cursor on the landing page

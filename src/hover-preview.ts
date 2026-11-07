@@ -208,13 +208,17 @@ export function mountHoverPreview(list: HTMLElement): void {
     if (src === currentSrc) return;
     currentSrc = src;
     const img = load(src);
-    if (!carpet) {
-      fallbackImg.src = src;
-      return;
-    }
-    const upload = () => src === currentSrc && carpet.setImage(img);
-    if (img.complete && img.naturalWidth) upload();
-    else img.addEventListener("load", upload, { once: true });
+    const apply = () => {
+      if (src !== currentSrc) return;
+      // The frame takes the photo's own shape (same height, width follows),
+      // so wide images aren't cropped.
+      frameEl.style.aspectRatio = `${img.naturalWidth} / ${img.naturalHeight}`;
+      if (carpet) carpet.setImage(img);
+      else fallbackImg.src = src;
+      kick();
+    };
+    if (img.complete && img.naturalWidth) apply();
+    else img.addEventListener("load", apply, { once: true });
   };
 
   /** Where the photo should be: on the cursor, vertically kept near the row. */

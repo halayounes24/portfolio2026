@@ -93,6 +93,7 @@ const lavinaTea: Project = {
   slug: "lavina-tea",
   title: "Lavina Tea",
   roles: ["Packaging Design"],
+  hoverImage: "assets/projects/lavina-tea/cover-thumb.webp",
   coverAlt: "Cover image for Lavina Tea",
 };
 
