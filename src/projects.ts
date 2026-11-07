@@ -22,6 +22,8 @@ export interface Project {
   roles: string[];
   cover: string;
   coverAlt: string;
+  /** Small image that follows the cursor when hovering the project's row (optional). */
+  hoverImage?: string;
   /** Short intro shown under the title on the project page. */
   overview: string;
   /** Key facts, e.g. role, team, tools, duration. */
@@ -68,14 +70,17 @@ function placeholderProject(n: number, type: string, year: string): Project {
   };
 }
 
-// L'Occitane En Provence — real details; images are placeholders until uploaded
+// L'Occitane En Provence — real cover; story images are placeholders until uploaded
 // to assets/projects/loccitane/.
 const loccitane: Project = {
   ...placeholderProject(1, "Campaign", "2023"),
   slug: "loccitane",
   title: "L'Occitane En Provence",
   roles: ["Art Direction", "Styling"],
-  coverAlt: "Cover image for L'Occitane En Provence",
+  cover: "assets/projects/loccitane/cover.webp",
+  coverAlt:
+    "L'Occitane gift box illustrated with a moonlit village, surrounded by arch-shaped packaging, lanterns and L'Occitane products",
+  hoverImage: "assets/projects/loccitane/cover-thumb.webp",
 };
 
 // Project 4 — uses the uploaded images in assets/projects/project-4/.

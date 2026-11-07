@@ -502,6 +502,29 @@ a { color: inherit; }
   .info__portrait { max-width: 20rem; }
 }
 
+/* ---------- Project hover preview (see src/hover-preview.ts) ---------- */
+.hover-preview {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 900; /* above the page, below the cursor circle */
+  width: clamp(220px, 22vw, 340px);
+  aspect-ratio: 3 / 2;
+  pointer-events: none;
+  opacity: 0;
+  scale: 0.85;
+  transition: opacity 200ms, scale 300ms var(--ease);
+}
+.hover-preview.is-visible {
+  opacity: 1;
+  scale: 1;
+}
+.hover-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 /* ---------- Cursor follower (see src/cursor.ts) ---------- */
 .cursor-follower {
   position: fixed;
