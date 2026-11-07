@@ -92,6 +92,7 @@ const lavinaTea: Project = {
   ...placeholderProject(2, "Packaging Design", "2025"),
   slug: "lavina-tea",
   title: "Lavina Tea",
+  roles: ["Packaging Design"],
   coverAlt: "Cover image for Lavina Tea",
 };
 
