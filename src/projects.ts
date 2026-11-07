@@ -170,19 +170,19 @@ const cityBriefings: Project = {
   ],
 };
 
-// Ajman University Executive Education — real details; year and images to come
+// Ajman University Executive Education — real details; images to come
 // (images go in assets/projects/ajman-university/).
 const ajman: Project = {
-  ...placeholderProject(7, "Branding", ""),
+  ...placeholderProject(7, "Branding", "2027"),
   slug: "ajman-university",
   title: "Ajman University Executive Education",
   roles: ["Art Direction", "Graphic Design"],
   coverAlt: "Cover image for Ajman University Executive Education",
 };
 
-// Fluidity — real details; year and images to come (assets/projects/fluidity/).
+// Fluidity — real details; images to come (assets/projects/fluidity/).
 const fluidity: Project = {
-  ...placeholderProject(8, "Exhibition", ""),
+  ...placeholderProject(8, "Exhibition", "2019"),
   slug: "fluidity",
   title: "Fluidity",
   roles: ["Art Direction", "Styling"],
