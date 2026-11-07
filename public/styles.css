@@ -63,6 +63,7 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
+  text-transform: uppercase; /* all text on the site is set in capitals */
   background: var(--bg);
   color: var(--fg);
   line-height: 1.5;
@@ -85,13 +86,14 @@ button, input, select, textarea { font: inherit; }
 
 a { color: inherit; }
 
-.eyebrow {
-  margin: 0 0 1rem;
-  color: var(--muted);
-  font-size: 0.95rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+/* Hidden on screen but still read by screen readers. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 .tags {
@@ -189,8 +191,21 @@ a { color: inherit; }
   .site-header__right { display: flex; gap: 1rem; }
   .tabs-nav { display: flex; gap: clamp(0.75rem, 3vw, 1.25rem); }
 }
-@media (max-width: 420px) {
-  .tabs-nav a { font-size: 0.9rem; }
+/* Phones: capitals are wide, so tighten the header to fit one row. */
+@media (max-width: 480px) {
+  .site-header { gap: 0.5rem; }
+  .site-header__name,
+  .tabs-nav a { font-size: 0.78rem; }
+  .site-header__right { gap: 0.6rem; }
+  .tabs-nav { gap: 0.6rem; }
+  .theme-switch { gap: 0.4rem; }
+  .theme-switch__option { width: 0.85rem; height: 0.85rem; }
+}
+@media (max-width: 350px) {
+  .site-header__name,
+  .tabs-nav a { font-size: 0.7rem; }
+  .site-header__right,
+  .tabs-nav { gap: 0.45rem; }
 }
 
 /* ---------- Intro ----------
@@ -233,15 +248,19 @@ a { color: inherit; }
 
 .project-row__link {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr);
-  grid-template-areas: "meta title type";
-  align-items: baseline;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "meta  type"
+    "title type";
+  align-items: start;
   column-gap: var(--gutter);
+  row-gap: 0.75rem;
   padding-block: clamp(1.1rem, 2.5vw, 1.75rem);
   text-decoration: none;
   transition: opacity 200ms;
 }
 
+/* Left side, top to bottom: client, year, then the project name. */
 .project-row__meta {
   grid-area: meta;
   display: grid;
@@ -261,7 +280,6 @@ a { color: inherit; }
 
 .project-row__type {
   grid-area: type;
-  justify-self: end;
   margin: 0;
   font-size: 0.85rem;
   text-align: right;
@@ -273,18 +291,6 @@ a { color: inherit; }
 
 .project-row__link:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 
-/* Narrow screens: client/year and type on one line, name underneath. */
-@media (max-width: 720px) {
-  .project-row__link {
-    grid-template-columns: 1fr auto;
-    grid-template-areas:
-      "meta  type"
-      "title title";
-    row-gap: 0.6rem;
-    align-items: start;
-  }
-  .project-row__meta { grid-auto-flow: column; justify-content: start; gap: 0.5rem; }
-}
 
 /* ---------- Project page ---------- */
 .project {
@@ -459,14 +465,14 @@ a { color: inherit; }
 .info__list { margin: 0; display: grid; }
 .info__list div {
   display: grid;
-  grid-template-columns: minmax(7rem, 1fr) 2fr;
+  grid-template-columns: minmax(7rem, 1fr) minmax(0, 2fr);
   gap: 1rem;
   padding-block: 0.75rem;
   border-top: 1px solid var(--line);
 }
 .info__list div:last-child { border-bottom: 1px solid var(--line); }
 .info__list dt { color: var(--muted); }
-.info__list dd { margin: 0; }
+.info__list dd { margin: 0; overflow-wrap: anywhere; } /* long links can wrap on small screens */
 .info__list a { text-decoration-color: var(--line); text-underline-offset: 0.2em; }
 .info__list a:hover { color: var(--accent); }
 
