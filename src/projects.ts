@@ -173,7 +173,7 @@ const cityBriefings: Project = {
 // Ajman University Executive Education — real details; images to come
 // (images go in assets/projects/ajman-university/).
 const ajman: Project = {
-  ...placeholderProject(7, "Branding", "2027"),
+  ...placeholderProject(7, "Branding", "2026"),
   slug: "ajman-university",
   title: "Ajman University Executive Education",
   roles: ["Art Direction", "Graphic Design"],
