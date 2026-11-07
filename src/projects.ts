@@ -189,6 +189,16 @@ const fluidity: Project = {
   coverAlt: "Cover image for Fluidity",
 };
 
+// Office of Development Affairs — real details; images to come
+// (assets/projects/development-affairs/).
+const developmentAffairs: Project = {
+  ...placeholderProject(9, "Branding", "2023-2025"),
+  slug: "development-affairs",
+  title: "Office of Development Affairs",
+  roles: ["Art Direction", "Graphic Design", "Training"],
+  coverAlt: "Cover image for Office of Development Affairs",
+};
+
 export const projects: Project[] = [
   loccitane,
   lavinaTea,
@@ -198,6 +208,7 @@ export const projects: Project[] = [
   gitex,
   ajman,
   fluidity,
+  developmentAffairs,
 ];
 
 export function findProject(slug: string | null): Project | undefined {
