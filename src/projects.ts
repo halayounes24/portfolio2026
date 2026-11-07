@@ -15,7 +15,10 @@ export interface Project {
   /** Used in the URL: project.html?p=<slug> */
   slug: string;
   title: string;
-  discipline: string;
+  /** Who the project was for. */
+  client: string;
+  /** Kind of project, e.g. Campaign, Brand identity, Film. */
+  type: string;
   year: string;
   cover: string;
   coverAlt: string;
@@ -39,7 +42,8 @@ const lorem =
 const project1: Project = {
   slug: "project-1",
   title: "Project 1", // TODO: real name
-  discipline: "Product design", // TODO
+  client: "Client name", // TODO
+  type: "Product design", // TODO
   year: "2026", // TODO
   cover: "assets/projects/project-1/cover.webp",
   coverAlt: "Walnut nesting tables with white tile inlays in a sunlit room",
@@ -89,11 +93,12 @@ const placeholderWide: Asset = { src: "assets/placeholders/asset-wide.svg", alt:
 const placeholderTall: Asset = { src: "assets/placeholders/asset-tall.svg", alt: "Placeholder asset (tall)", caption: "Caption for this asset." };
 const placeholderSquare: Asset = { src: "assets/placeholders/asset-square.svg", alt: "Placeholder asset (square)" };
 
-function placeholderProject(n: number, discipline: string, year: string): Project {
+function placeholderProject(n: number, type: string, year: string): Project {
   return {
     slug: `project-${n}`,
     title: `Project ${n}`,
-    discipline,
+    client: "Client name",
+    type,
     year,
     cover: `assets/placeholders/project-${n}.svg`,
     coverAlt: `Cover image for project ${n}`,
@@ -116,10 +121,10 @@ function placeholderProject(n: number, discipline: string, year: string): Projec
 export const projects: Project[] = [
   project1,
   placeholderProject(2, "Brand identity", "2026"),
-  placeholderProject(3, "Web development", "2025"),
-  placeholderProject(4, "UX research", "2025"),
-  placeholderProject(5, "Motion", "2024"),
-  placeholderProject(6, "Creative direction", "2024"),
+  placeholderProject(3, "Campaign", "2025"),
+  placeholderProject(4, "Film", "2025"),
+  placeholderProject(5, "Website", "2024"),
+  placeholderProject(6, "Art direction", "2024"),
 ];
 
 export function findProject(slug: string | null): Project | undefined {

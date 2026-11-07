@@ -5,17 +5,17 @@ One-page static site: HTML + CSS + TypeScript (compiled with `tsc`, no bundler).
 
 ## Structure
 - `public/` — static files copied as-is into `dist/`
-  - `index.html` — landing page / Projects tab: intro + accordion of projects
+  - `index.html` — landing page / Projects tab: intro + list of projects
   - `info.html` — Info tab: bio, experience, capabilities
   - `contact.html` — Contact tab: email and links
   - `project.html` — project page template (`project.html?p=<slug>`)
   - The site header (name + tabs) is plain HTML repeated in each page; mark the
     active tab with `aria-current="page"`.
-  - `styles.css` — all styles; tokens (colours, accordion sizing) live at the top
+  - `styles.css` — all styles; tokens (colours, spacing, type) live at the top
   - `assets/` — images and other media; see `public/assets/README.md` for the folder layout and upload guide
 - `src/` — TypeScript, compiled to `dist/`
-  - `projects.ts` — **all project content** (title, tags, facts, story sections, assets)
-  - `accordion.ts` — renders the landing-page columns
+  - `projects.ts` — **all project content** (title, client, type, year, facts, story sections, assets)
+  - `project-list.ts` — renders the landing-page project list
   - `project-page.ts` — renders a project page from the `?p=` slug
   - `theme.ts` — colour themes and the header switcher (circles)
   - `main.ts` — landing page entry point

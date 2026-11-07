@@ -1,5 +1,5 @@
-import { mountAccordion } from "./accordion.js";
+import { mountProjectList } from "./project-list.js";
 import { projects } from "./projects.js";
 
-const accordion = document.querySelector<HTMLElement>("#accordion");
-if (accordion) mountAccordion(accordion, projects);
+const list = document.querySelector<HTMLElement>("#project-list");
+if (list) mountProjectList(list, projects);

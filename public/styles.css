@@ -3,10 +3,6 @@
   /* Every page runs edge to edge with this margin on the left and right. */
   --gutter: clamp(12px, 1.5vw, 24px);
 
-  /* Accordion */
-  --acc-h: clamp(420px, 70vh, 680px); /* height of the row of columns */
-  --acc-gap: 0.5rem;
-  --acc-grow: 5;                      /* how much wider the hovered column gets */
 
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
   --dur: 450ms;
@@ -35,6 +31,7 @@
   --fg: #f1efe9;
   --muted: #9c978e;
   --line: #2c2c2c;
+  --rule: color-mix(in srgb, var(--fg) 30%, transparent); /* list dividers */
   --accent: #ff5a36;
 }
 
@@ -44,6 +41,7 @@
   --fg: #1a1a1a;
   --muted: #6b6760;
   --line: #e3dfd6;
+  --rule: color-mix(in srgb, var(--fg) 30%, transparent); /* list dividers */
   --accent: #ff5a36;
 }
 
@@ -78,8 +76,7 @@ button, input, select, textarea { font: inherit; }
 /* Heavy condensed style — only for short titles (a few words at most). */
 .page__title,
 .project__title,
-.panel__title,
-.panel__spine,
+.project-row__title,
 .project__next-title {
   font-weight: var(--display-weight);
   font-stretch: var(--display-stretch);
@@ -223,130 +220,70 @@ a { color: inherit; }
   padding: 0 var(--gutter) 6rem;
 }
 
-.accordion {
+/* Project list: one row per project, separated by thin rules.
+   left = client + year, middle = project name, right = project type. */
+.project-list {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: flex;
-  gap: var(--acc-gap);
-  height: var(--acc-h);
+  border-top: 1px solid var(--rule);
 }
 
-.panel {
-  flex: 1 1 0;
-  min-width: 0;
-  transition: flex-grow var(--dur) var(--ease);
-}
+.project-row { border-bottom: 1px solid var(--rule); }
 
-.panel__link {
-  position: relative;
-  display: block;
-  height: 100%;
-  overflow: hidden;
-  color: #fff;
+.project-row__link {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr);
+  grid-template-areas: "meta title type";
+  align-items: baseline;
+  column-gap: var(--gutter);
+  padding-block: clamp(1.1rem, 2.5vw, 1.75rem);
   text-decoration: none;
-  background: var(--line);
+  transition: opacity 200ms;
 }
 
-.panel__link:focus-visible {
-  outline: 3px solid var(--accent);
-  outline-offset: -3px; /* inset, so it isn't clipped at the viewport edge */
-}
-
-.panel__img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transform: scale(1.05);
-  transition: transform var(--dur) var(--ease);
-}
-
-/* Darken toward the bottom so text stays readable on any image. */
-.panel__link::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgb(0 0 0 / 0.65), rgb(0 0 0 / 0.1) 55%, rgb(0 0 0 / 0.25));
-  transition: opacity var(--dur) var(--ease);
-}
-
-.panel__index,
-.panel__spine,
-.panel__info {
-  position: absolute;
-  z-index: 1;
-}
-
-.panel__index {
-  top: 1rem;
-  left: 1rem;
+.project-row__meta {
+  grid-area: meta;
+  display: grid;
+  margin: 0;
   font-size: 0.85rem;
-  font-variant-numeric: tabular-nums;
-  opacity: 0.85;
+  font-weight: 500;
+  line-height: 1.35;
+}
+.project-row__meta span + span { color: var(--muted); }
+
+.project-row__title {
+  grid-area: title;
+  margin: 0;
+  font-size: clamp(1.6rem, 3vw, 2.75rem);
+  line-height: 1.05;
 }
 
-/* Collapsed: title runs up the column */
-.panel__spine {
-  left: 50%;
-  bottom: 1.25rem;
-  translate: -50% 0;
-  writing-mode: vertical-rl;
-  rotate: 180deg;
-  white-space: nowrap;
-  font-size: clamp(1rem, 1.6vw, 1.35rem);
-  transition: opacity calc(var(--dur) * 0.6) var(--ease);
+.project-row__type {
+  grid-area: type;
+  justify-self: end;
+  margin: 0;
+  font-size: 0.85rem;
+  text-align: right;
 }
 
-/* Expanded: title + tags along the bottom */
-.panel__info {
-  left: 1.25rem;
-  right: 1.25rem;
-  bottom: 1.25rem;
-  opacity: 0;
-  translate: 0 0.75rem;
-  transition:
-    opacity calc(var(--dur) * 0.6) var(--ease),
-    translate var(--dur) var(--ease);
-}
+/* Hovering (or tabbing to) a row dims the others. */
+.project-list:has(.project-row__link:hover, .project-row__link:focus-visible)
+  .project-row__link:not(:hover, :focus-visible) { opacity: 0.35; }
 
-.panel__title {
-  margin: 0 0 0.6rem;
-  font-size: clamp(1.4rem, 2.4vw, 2rem);
-  line-height: 1.1;
-  white-space: nowrap;
-}
+.project-row__link:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 
-/* Partial expand on hover / keyboard focus */
-.panel:hover,
-.panel:has(:focus-visible) { flex-grow: var(--acc-grow); }
-
-.panel:hover .panel__img,
-.panel:has(:focus-visible) .panel__img { transform: scale(1); }
-
-.panel:hover .panel__spine,
-.panel:has(:focus-visible) .panel__spine { opacity: 0; transition-delay: 0s; }
-
-.panel:hover .panel__info,
-.panel:has(:focus-visible) .panel__info {
-  opacity: 1;
-  translate: 0 0;
-  transition-delay: calc(var(--dur) * 0.35);
-}
-
-/* Small screens / touch: stack as rows, show titles and tags, tap to open */
-@media (max-width: 720px), (hover: none) {
-  .accordion {
-    flex-direction: column;
-    height: auto;
+/* Narrow screens: client/year and type on one line, name underneath. */
+@media (max-width: 720px) {
+  .project-row__link {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "meta  type"
+      "title title";
+    row-gap: 0.6rem;
+    align-items: start;
   }
-  .panel,
-  .panel:hover,
-  .panel:has(:focus-visible) { flex: none; height: 12rem; }
-  .panel__spine { display: none; }
-  .panel__info { opacity: 1; translate: 0 0; }
-  .panel__title { white-space: normal; }
+  .project-row__meta { grid-auto-flow: column; justify-content: start; gap: 0.5rem; }
 }
 
 /* ---------- Project page ---------- */
