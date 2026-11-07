@@ -524,6 +524,11 @@ a { color: inherit; }
   height: 100%;
   object-fit: cover;
 }
+/* WebGL canvas: larger than the box so the bent edges have room. */
+.hover-preview canvas {
+  position: absolute;
+  display: block;
+}
 
 /* ---------- Cursor follower (see src/cursor.ts) ---------- */
 .cursor-follower {
