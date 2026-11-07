@@ -17,8 +17,16 @@ One-page static site: HTML + CSS + TypeScript (compiled with `tsc`, no bundler).
   - `projects.ts` — **all project content** (title, tags, facts, story sections, assets)
   - `accordion.ts` — renders the landing-page columns
   - `project-page.ts` — renders a project page from the `?p=` slug
+  - `theme.ts` — colour themes and the header switcher (circles)
   - `main.ts` — landing page entry point
   - `dom.ts` — small DOM helpers
+
+## Colour themes
+Visitors pick a theme with the circles in the header; the choice is remembered.
+With no choice saved, the site follows the device's light/dark setting.
+To add a theme:
+1. add a `[data-theme="<id>"] { … }` block of colours in `public/styles.css`
+2. add `{ id, label, swatch }` to the list in `src/theme.ts`
 
 ## Develop
 ```bash
