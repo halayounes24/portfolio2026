@@ -107,6 +107,16 @@ const dxb: Project = {
   coverAlt: "Cover image for DXB | Dubai Airport",
 };
 
+// Tabliyè — real details; images are placeholders until uploaded
+// to assets/projects/tabliye/.
+const tabliye: Project = {
+  ...placeholderProject(5, "Product", "2017"),
+  slug: "tabliye",
+  title: "Tabliyè",
+  roles: ["Industrial Design", "Furniture Design"],
+  coverAlt: "Cover image for Tabliyè",
+};
+
 // City Briefings — uses the images in assets/projects/city-briefings/.
 const cityBriefings: Project = {
   ...placeholderProject(4, "Event", "2025-2026"),
@@ -154,7 +164,7 @@ export const projects: Project[] = [
   lavinaTea,
   dxb,
   cityBriefings,
-  placeholderProject(5, "Website", "2024"),
+  tabliye,
   placeholderProject(6, "Art direction", "2024"),
 ];
 
