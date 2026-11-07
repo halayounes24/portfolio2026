@@ -89,7 +89,7 @@ const loccitane: Project = {
 // Lavina Tea — real details; images are placeholders until uploaded
 // to assets/projects/lavina-tea/.
 const lavinaTea: Project = {
-  ...placeholderProject(2, "Packaging Design", "2025"),
+  ...placeholderProject(2, "Product", "2025"),
   slug: "lavina-tea",
   title: "Lavina Tea",
   roles: ["Packaging Design"],
