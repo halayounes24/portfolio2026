@@ -3,7 +3,8 @@ import { projectUrl, type Project } from "./projects.js";
 
 /**
  * Landing-page project list. Each row links to the project page:
- *   left   — "type / year" (small), with the project name (large) underneath
+ *   left   — "type / year" (small), the project name (large), and a one-line
+ *            description that opens on hover (always shown on touch screens)
  *   right  — your roles, e.g. "Art Direction / Styling" (small)
  */
 function renderRow(project: Project): HTMLLIElement {
@@ -15,11 +16,13 @@ function renderRow(project: Project): HTMLLIElement {
 
   const meta = el("p", "project-row__meta", [project.type, project.year].filter(Boolean).join(" / "));
 
-  link.append(
-    meta,
-    el("h3", "project-row__title", project.title),
-    el("p", "project-row__roles", project.roles.join(" / ")),
-  );
+  // Name + one-liner share the "title" area so the closed one-liner takes no space.
+  const name = el("div", "project-row__name");
+  const tagline = el("div", "project-row__tagline");
+  tagline.append(el("p", undefined, project.tagline));
+  name.append(el("h3", "project-row__title", project.title), tagline);
+
+  link.append(meta, name, el("p", "project-row__roles", project.roles.join(" / ")));
   item.append(link);
   return item;
 }

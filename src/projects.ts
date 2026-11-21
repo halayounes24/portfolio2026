@@ -28,6 +28,8 @@ export interface Project {
   /** Short intro shown under the title on the project page. */
   /** "Project info" text shown on the project page. */
   overview: string;
+  /** One-line description shown under the name on the landing page (on hover; always on touch screens). */
+  tagline: string;
   sections: Section[];
   /** Credits listed at the end of the project page (optional). */
   credits?: { role: string; name: string }[];
@@ -57,6 +59,7 @@ function placeholderProject(n: number, type: string, year: string): Project {
     cover: `assets/placeholders/project-${n}.svg`,
     coverAlt: `Cover image for project ${n}`,
     overview: "A one or two sentence overview of the project: what it is and who it was for.",
+    tagline: "A one-line description of the project.",
     sections: [
       { heading: "The challenge", body: lorem, assets: [placeholderWide] },
       { heading: "What I did", body: lorem, assets: [placeholderTall, placeholderSquare] },
@@ -113,6 +116,7 @@ const tabliye: Project = {
   ...placeholderProject(5, "Product", "2017"),
   slug: "tabliye",
   title: "Tabliyè",
+  tagline: "A new take on Arabic traditional furniture.",
   roles: ["Industrial Design", "Furniture Design"],
   cover: "assets/projects/tabliye/cover.webp",
   coverAlt: "Walnut nesting tables with white tile inlays in a sunlit room",

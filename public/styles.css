@@ -267,7 +267,7 @@ a { color: inherit; }
   grid-template-columns: minmax(0, 1fr) auto;
   grid-template-areas:
     "meta  roles"
-    "title roles";
+    "title title"; /* name + one-liner use the full row width */
   align-items: start;
   column-gap: var(--gutter);
   row-gap: 0.75rem;
@@ -286,11 +286,44 @@ a { color: inherit; }
   line-height: 1.35;
 }
 
+.project-row__name { grid-area: title; }
+
 .project-row__title {
-  grid-area: title;
   margin: 0;
   font-size: var(--fs-title);
   line-height: 1.05;
+}
+
+/* One-line description: closed (zero height) until the row is hovered.
+   Animates open with the strip using the grid 0fr → 1fr trick. */
+.project-row__tagline {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-rows var(--dur) var(--ease),
+    opacity var(--dur) var(--ease);
+}
+.project-row__tagline > p {
+  min-height: 0;
+  overflow: hidden;
+  margin: 0;
+  color: var(--muted);
+  font-size: var(--fs-body);
+}
+.project-row__tagline > p::before {
+  content: "";
+  display: block;
+  height: 0.5rem; /* space between name and one-liner, only when open */
+}
+.project-row__link:hover .project-row__tagline,
+.project-row__link:focus-visible .project-row__tagline {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+/* Touch screens have no hover: keep the one-liner visible. */
+@media (hover: none) {
+  .project-row__tagline { grid-template-rows: 1fr; opacity: 1; }
 }
 
 .project-row__roles {
@@ -298,6 +331,10 @@ a { color: inherit; }
   margin: 0;
   font-size: var(--fs-label);
   text-align: right;
+}
+/* Phones: long role lists wrap instead of squeezing the left column. */
+@media (max-width: 720px) {
+  .project-row__roles { max-width: 22ch; }
 }
 
 /* Hovering (or tabbing to) a row makes its strip taller and its text italic… */
