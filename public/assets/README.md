@@ -19,7 +19,7 @@ assets/
 
 ## Naming
 - Lowercase, no spaces: `cover.jpg`, `01.jpg`, `02-homepage.jpg`, `03-mobile.png`.
-- Number story images (`01`, `02`, …) so they sort in the order they appear.
+- Number further images (`01`, `02`, …) so they sort in the order they appear below the hero.
 - Each project folder name must match that project's `slug` in `src/projects.ts`.
   If you rename a project's slug, rename its folder too.
 

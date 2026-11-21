@@ -49,7 +49,7 @@ function placeholderProject(n: number, type: string, year: string): Project {
   };
 }
 
-// L'Occitane En Provence — real cover; story images are placeholders until uploaded
+// L'Occitane En Provence — real hero image; further images to come
 // to assets/projects/loccitane/.
 const loccitane: Project = {
   ...placeholderProject(1, "Campaign", "2023"),
