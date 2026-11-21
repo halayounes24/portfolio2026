@@ -22,7 +22,10 @@ function renderProject(project: Project): DocumentFragment {
 
   const info = el("div", "project__info");
   const about = el("div", "project__about");
-  about.append(el("h2", "project__label", "Project info"), el("p", "project__text", project.overview));
+  about.append(el("h2", "project__label", "Project info"));
+  for (const para of project.description.split(/\n\s*\n/)) {
+    about.append(el("p", "project__text", para.trim()));
+  }
 
   const details = el("dl", "project__details");
   for (const [label, value] of [
@@ -38,25 +41,22 @@ function renderProject(project: Project): DocumentFragment {
 
   header.append(el("h1", "project__title", project.title), info);
 
-  // Cover
-  const cover = el("figure", "project__cover");
-  const coverImg = el("img");
-  coverImg.src = project.cover;
-  coverImg.alt = project.coverAlt;
-  coverImg.style.viewTransitionName = coverTransitionName(project.slug);
-  cover.append(coverImg);
+  // Hero image (the project's cover), shown at its natural shape.
+  const hero = el("figure", "project__hero");
+  const heroImg = el("img");
+  heroImg.src = project.cover;
+  heroImg.alt = project.coverAlt;
+  heroImg.decoding = "async";
+  heroImg.style.viewTransitionName = coverTransitionName(project.slug);
+  hero.append(heroImg);
 
-  frag.append(header, cover);
+  frag.append(header, hero);
 
-  // Story: text column stays in view while its assets scroll past.
-  for (const section of project.sections) {
-    const s = el("section", "story");
-    const text = el("div", "story__text");
-    text.append(el("h2", undefined, section.heading), el("p", undefined, section.body));
-    const media = el("div", "story__media");
-    media.append(...section.assets.map(renderAsset));
-    s.append(text, media);
-    frag.append(s);
+  // Further images, full width, in order.
+  if (project.gallery?.length) {
+    const gallery = el("div", "project__gallery");
+    gallery.append(...project.gallery.map(renderAsset));
+    frag.append(gallery);
   }
 
   // Credits: label on the left, list in the right half under the tabs.

@@ -4,13 +4,6 @@ export interface Asset {
   caption?: string;
 }
 
-export interface Section {
-  heading: string;
-  body: string;
-  /** Assets shown alongside this section's text. */
-  assets: Asset[];
-}
-
 export interface Project {
   /** Used in the URL: project.html?p=<slug> */
   slug: string;
@@ -21,16 +14,17 @@ export interface Project {
   year: string;
   /** What you did on the project, e.g. ["Art Direction", "Styling"]. */
   roles: string[];
+  /** Hero image at the top of the project page (shown at its natural shape). */
   cover: string;
   coverAlt: string;
   /** Small image that follows the cursor when hovering the project's row (optional). */
   hoverImage?: string;
-  /** Short intro shown under the title on the project page. */
-  /** "Project info" text shown on the project page. */
-  overview: string;
+  /** "Project info" text on the project page. Separate paragraphs with a blank line. */
+  description: string;
   /** One-line description shown under the name on the landing page (on hover; always on touch screens). */
   tagline: string;
-  sections: Section[];
+  /** Extra images shown below the hero, full width, in order (optional). */
+  gallery?: Asset[];
   /** Credits listed at the end of the project page (optional). */
   credits?: { role: string; name: string }[];
 }
@@ -40,15 +34,7 @@ export interface Project {
 // Asset paths are relative to the site root, e.g. assets/projects/<slug>/cover.webp
 // ---------------------------------------------------------------------------
 
-const lorem =
-  "Placeholder copy. Replace this with a few sentences in your own words. " +
-  "Keep it concrete: what the situation was, what you did, and why it mattered.";
-
-// Temporary filler for projects that don't have real content yet.
-const placeholderWide: Asset = { src: "assets/placeholders/asset-wide.svg", alt: "Placeholder asset (wide)", caption: "Caption for this asset." };
-const placeholderTall: Asset = { src: "assets/placeholders/asset-tall.svg", alt: "Placeholder asset (tall)", caption: "Caption for this asset." };
-const placeholderSquare: Asset = { src: "assets/placeholders/asset-square.svg", alt: "Placeholder asset (square)" };
-
+// Starting values for each project; real details override them below.
 function placeholderProject(n: number, type: string, year: string): Project {
   return {
     slug: `project-${n}`,
@@ -58,13 +44,8 @@ function placeholderProject(n: number, type: string, year: string): Project {
     roles: ["Role", "Role"],
     cover: `assets/placeholders/project-${n}.svg`,
     coverAlt: `Cover image for project ${n}`,
-    overview: "A one or two sentence overview of the project: what it is and who it was for.",
+    description: "A short description of the project: what it is, who it was for, and what you did.",
     tagline: "A one-line description of the project.",
-    sections: [
-      { heading: "The challenge", body: lorem, assets: [placeholderWide] },
-      { heading: "What I did", body: lorem, assets: [placeholderTall, placeholderSquare] },
-      { heading: "The outcome", body: lorem, assets: [placeholderWide] },
-    ],
   };
 }
 
@@ -111,45 +92,28 @@ const dxb: Project = {
   coverAlt: "Cover image for DXB | Dubai Airport",
 };
 
-// Tabliyè — uses the images in assets/projects/tabliye/.
+// Tabliyè — hero and gallery images in assets/projects/tabliye/.
 const tabliye: Project = {
   ...placeholderProject(5, "Product", "2017"),
   slug: "tabliye",
   title: "Tabliyè",
   tagline: "A new take on Arabic traditional furniture.",
   roles: ["Industrial Design", "Furniture Design"],
+  description: [
+    "Tabliyè is a re-invention of the old traditional Middle Eastern Tabliyeh, a simple, low, round wooden table. It is both a coffee table and a dining table. This work explores the preservation of the cultural values of this tool and keeping social habits alive, while improving the functionality to match the current setup and timeframe. The product experience is designed to be as simple and hassle-free as possible.",
+    "The concept of Tabliyè was born in Italy. The influence and origin are Arab; the setup is Western. Arabic culture, food and art are all a whirl of an emotional and rich experience, especially when they inspire everyday useful objects.",
+  ].join("\n\n"),
   cover: "assets/projects/tabliye/cover.webp",
   coverAlt: "Walnut nesting tables with white tile inlays in a sunlit room",
-  sections: [
+  gallery: [
     {
-      heading: "The challenge",
-      body: lorem,
-      assets: [
-        {
-          src: "assets/projects/tabliye/01.webp",
-          alt: "Top-down view of the tables set with food, hands holding a bowl of lemons and mint",
-        },
-      ],
+      src: "assets/projects/tabliye/01.webp",
+      alt: "Top-down view of the tables set with food, hands holding a bowl of lemons and mint",
     },
+    { src: "assets/projects/tabliye/02.gif", alt: "Animated close-ups of the patterned walnut tabletops" },
     {
-      heading: "What I did",
-      body: lorem,
-      assets: [
-        {
-          src: "assets/projects/tabliye/02.gif",
-          alt: "Animated close-ups of the patterned walnut tabletops",
-        },
-      ],
-    },
-    {
-      heading: "The outcome",
-      body: lorem,
-      assets: [
-        {
-          src: "assets/projects/tabliye/03.gif",
-          alt: "Animated views of the finished tables styled with food in a bright room",
-        },
-      ],
+      src: "assets/projects/tabliye/03.gif",
+      alt: "Animated views of the finished tables styled with food in a bright room",
     },
   ],
 };

@@ -7,7 +7,7 @@ assets/
 ├── projects/        one folder per project (folder name = project slug)
 │   ├── loccitane/
 │   │   ├── cover.jpg    used on the landing page column and project page header
-│   │   ├── 01.jpg       images shown in the project story, in order
+│   │   ├── 01.jpg       further images shown below the hero, in order
 │   │   ├── 02.jpg
 │   │   └── …
 │   └── …

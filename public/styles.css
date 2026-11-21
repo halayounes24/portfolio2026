@@ -438,6 +438,8 @@ a { color: inherit; }
   max-width: 60ch;
   color: var(--muted);
 }
+/* Multi-paragraph descriptions: a little space between paragraphs. */
+.project__text + .project__text { margin-top: 0.85em; }
 
 /* Year | Role — four equal columns, like PROJECTS / INFO / CONTACT / circles. */
 .project__details {
@@ -466,38 +468,19 @@ a { color: inherit; }
 .info__list a { text-decoration-color: var(--rule); text-underline-offset: 0.2em; }
 .info__list a:hover { color: var(--accent); }
 
-.project__cover {
-  margin: var(--space-section) 0;
-  overflow: hidden;
-  aspect-ratio: 16 / 9;
+/* Hero image: full width at its natural shape (no cropping). */
+.project__hero {
+  margin: var(--space-section) 0 0;
   background: var(--line);
 }
-.project__cover img { width: 100%; height: 100%; object-fit: cover; }
+.project__hero img { width: 100%; height: auto; }
 
-/* Story: sticky text on the left, assets scroll on the right */
-.story {
+/* Further images: full width, stacked, same spacing as the margins. */
+.project__gallery {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
   gap: var(--gutter);
-  margin-bottom: var(--space-section);
-  padding-top: var(--space-section);
-  border-top: 1px solid var(--rule);
+  margin-top: var(--gutter);
 }
-
-.story__text {
-  position: sticky;
-  top: 2rem;
-  align-self: start;
-}
-.story__text h2 {
-  margin: 0 0 0.75rem;
-  font-size: var(--fs-label);
-  font-weight: 500;
-  color: var(--muted);
-}
-.story__text p { margin: 0; max-width: 45ch; }
-
-.story__media { display: grid; gap: var(--gutter); }
 
 .asset { margin: 0; }
 .asset img {
@@ -554,8 +537,6 @@ a { color: inherit; }
   .project__credits { grid-template-columns: 1fr; row-gap: 1rem; }
   .project__credits-list div { grid-template-columns: 1fr 2fr; }
   .project__credits-list dd { grid-column: auto; }
-  .story { grid-template-columns: 1fr; }
-  .story__text { position: static; }
 }
 
 /* ---------- Info ---------- */

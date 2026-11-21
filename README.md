@@ -14,7 +14,7 @@ One-page static site: HTML + CSS + TypeScript (compiled with `tsc`, no bundler).
   - `styles.css` — all styles; tokens (colours, spacing, type) live at the top
   - `assets/` — images and other media; see `public/assets/README.md` for the folder layout and upload guide
 - `src/` — TypeScript, compiled to `dist/`
-  - `projects.ts` — **all project content** (title, client, type, year, facts, story sections, assets)
+  - `projects.ts` — **all project content** (title, type, year, roles, one-liner, description, hero, gallery, credits)
   - `project-list.ts` — renders the landing-page project list
   - `project-page.ts` — renders a project page from the `?p=` slug
   - `theme.ts` — colour themes and the header switcher (circles)
