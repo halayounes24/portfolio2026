@@ -581,7 +581,8 @@ a { color: inherit; }
   .info__portrait { max-width: 20rem; }
 }
 
-/* ---------- Project hover preview (see src/hover-preview.ts) ---------- */
+/* ---------- Project hover preview (see src/hover-preview.ts) ----------
+   Shows the project's cover; glides after the cursor, no wobble. */
 .hover-preview {
   position: fixed;
   top: 0;
@@ -604,11 +605,7 @@ a { color: inherit; }
   height: 100%;
   object-fit: cover;
 }
-/* WebGL canvas: larger than the box so the bent edges have room. */
-.hover-preview canvas {
-  position: absolute;
-  display: block;
-}
+
 
 /* ---------- Cursor follower (see src/cursor.ts) ---------- */
 .cursor-follower {

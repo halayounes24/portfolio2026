@@ -17,7 +17,7 @@ export interface Project {
   /** Hero image at the top of the project page (shown at its natural shape). */
   cover: string;
   coverAlt: string;
-  /** Small image that follows the cursor when hovering the project's row (optional). */
+  /** Small copy of the cover (cover-thumb.webp) that follows the cursor over the project's row (optional). */
   hoverImage?: string;
   /** "Project info" text on the project page. Separate paragraphs with a blank line. */
   description: string;
@@ -105,6 +105,7 @@ const tabliye: Project = {
   ].join("\n\n"),
   cover: "assets/projects/tabliye/cover.webp",
   coverAlt: "Walnut nesting tables with white tile inlays in a sunlit room",
+  hoverImage: "assets/projects/tabliye/cover-thumb.webp", // small copy of the cover
   gallery: [
     {
       src: "assets/projects/tabliye/01.webp",
