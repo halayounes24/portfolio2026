@@ -1,7 +1,18 @@
 export interface Asset {
+  /** Image (.webp/.jpg/.png/.gif) or video (.mp4 — plays silently on a loop). */
   src: string;
   alt: string;
   caption?: string;
+  /** For videos: a still image shown while the video loads. */
+  poster?: string;
+}
+
+/** A block of text (left half) with an image or video beside it (right half). */
+export interface Section {
+  heading?: string;
+  /** Separate paragraphs with a blank line. */
+  body: string;
+  asset?: Asset;
 }
 
 export interface Project {
@@ -23,7 +34,9 @@ export interface Project {
   description: string;
   /** One-line description shown under the name on the landing page (on hover; always on touch screens). */
   tagline: string;
-  /** Extra images shown below the hero, full width, in order (optional). */
+  /** Text + image sections shown below the hero, in order (optional). */
+  sections?: Section[];
+  /** Extra images shown below the sections, full width, in order (optional). */
   gallery?: Asset[];
   /** Credits listed at the end of the project page (optional). */
   credits?: { role: string; name: string }[];
@@ -105,6 +118,21 @@ const tabliye: Project = {
   ].join("\n\n"),
   cover: "assets/projects/tabliye/cover.webp",
   coverAlt: "Walnut nesting tables with white tile inlays in a sunlit room",
+  sections: [
+    {
+      heading: "What is it, and why renovate?",
+      body: [
+        "The Tabliyeh comes from a time of traditional floor seating with no chairs. Back then, houses were very small and space was limited. At mealtime, the Tabliyeh would be placed in the living area for sharing a meal and lounging around it. It would then be removed so the space could be used for other activities.",
+        "Most Middle Eastern families think of sharing a meal together as having a purely sentimental value with social aspects. A lot of them still prefer to share a meal in the living area, even though that space has nowadays changed into a modern setup.",
+        "Preserving the cultural values of this tool and keeping social habits alive, while improving the functionality to match the current setup and time, is crucial. The challenge was to do this without turning the Tabliyeh into a nostalgic piece, and without losing it to generic modern furniture.",
+      ].join("\n\n"),
+      asset: {
+        src: "assets/projects/tabliye/old.mp4",
+        poster: "assets/projects/tabliye/old-poster.webp",
+        alt: "Black-and-white footage of a family sharing a meal around a traditional round Tabliyeh",
+      },
+    },
+  ],
   hoverImage: "assets/projects/tabliye/cover-thumb.webp", // small copy of the cover
   gallery: [
     {

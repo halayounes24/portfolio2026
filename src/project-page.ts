@@ -3,14 +3,33 @@ import { findProject, projects, projectUrl, type Asset, type Project } from "./p
 
 function renderAsset(asset: Asset): HTMLElement {
   const figure = el("figure", "asset");
-  const img = el("img");
-  img.src = asset.src;
-  img.alt = asset.alt;
-  img.loading = "lazy";
-  img.decoding = "async";
-  figure.append(img);
+  if (/\.mp4$/i.test(asset.src)) {
+    // Short clips play like a GIF: silent, looping, inline on phones.
+    const video = el("video");
+    video.src = asset.src;
+    if (asset.poster) video.poster = asset.poster;
+    video.muted = true;
+    video.loop = true;
+    video.autoplay = true;
+    video.playsInline = true;
+    video.preload = "metadata";
+    video.setAttribute("aria-label", asset.alt);
+    figure.append(video);
+  } else {
+    const img = el("img");
+    img.src = asset.src;
+    img.alt = asset.alt;
+    img.loading = "lazy";
+    img.decoding = "async";
+    figure.append(img);
+  }
   if (asset.caption) figure.append(el("figcaption", undefined, asset.caption));
   return figure;
+}
+
+/** Paragraphs from text with blank lines between them. */
+function paragraphs(text: string, className: string): HTMLParagraphElement[] {
+  return text.split(/\n\s*\n/).map((p) => el("p", className, p.trim()));
 }
 
 function renderProject(project: Project): DocumentFragment {
@@ -22,10 +41,7 @@ function renderProject(project: Project): DocumentFragment {
 
   const info = el("div", "project__info");
   const about = el("div", "project__about");
-  about.append(el("h2", "project__label", "Project info"));
-  for (const para of project.description.split(/\n\s*\n/)) {
-    about.append(el("p", "project__text", para.trim()));
-  }
+  about.append(el("h2", "project__label", "Project info"), ...paragraphs(project.description, "project__text"));
 
   const details = el("dl", "project__details");
   for (const [label, value] of [
@@ -51,6 +67,21 @@ function renderProject(project: Project): DocumentFragment {
   hero.append(heroImg);
 
   frag.append(header, hero);
+
+  // Sections: text in the left half, image/video in the right half.
+  for (const section of project.sections ?? []) {
+    const block = el("section", "project__section");
+    const text = el("div", "project__section-text");
+    if (section.heading) text.append(el("h2", "project__label", section.heading));
+    text.append(...paragraphs(section.body, "project__text"));
+    block.append(text);
+    if (section.asset) {
+      const media = el("div", "project__section-media");
+      media.append(renderAsset(section.asset));
+      block.append(media);
+    }
+    frag.append(block);
+  }
 
   // Further images, full width, in order.
   if (project.gallery?.length) {
